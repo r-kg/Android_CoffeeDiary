@@ -4,13 +4,14 @@
     <item
         android:id="@+id/fragment_1"
         android:icon="@drawable/ic_home"
-        android:title="Home" />
+        android:title="홈" />
     <item
         android:id="@+id/fragment_2"
         android:icon="@drawable/ic_add"
-        android:title="Add" />
+
+        android:title="커피+" />
     <item
         android:id="@+id/fragment_3"
         android:icon="@drawable/ic_stat"
-        android:title="Stat" />
+        android:title="통계" />
 </menu>

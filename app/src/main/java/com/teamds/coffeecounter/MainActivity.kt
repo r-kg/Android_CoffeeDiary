@@ -18,9 +18,12 @@ class MainActivity : AppCompatActivity() {
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         val navController = findNavController(R.id.fragment)
-
         bottomNavigationView.setupWithNavController(navController)
-        setSupportActionBar(findViewById(R.id.toolbar))
+
+        setSupportActionBar(findViewById(R.id.main_toolbar))
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_home)
 
     }
 }
