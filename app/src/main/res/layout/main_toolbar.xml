@@ -16,6 +16,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="커피몇잔"
+        android:textColor="@android:color/black"
         android:layout_marginRight="?android:attr/actionBarSize"
         android:textSize="20sp" />
 
