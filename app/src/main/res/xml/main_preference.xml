@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="일반">
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="기타">
+
+
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
