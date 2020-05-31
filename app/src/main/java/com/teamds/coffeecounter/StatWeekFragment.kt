@@ -10,9 +10,9 @@ import com.teamds.coffeecounter.databinding.FragmentStatChildBinding
 /**
  * A simple [Fragment] subclass.
  */
-class Stat_Week_Fragment : Fragment() {
+class StatWeekFragment : Fragment() {
 
-    lateinit var binding : FragmentStatChildBinding
+    private lateinit var binding : FragmentStatChildBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

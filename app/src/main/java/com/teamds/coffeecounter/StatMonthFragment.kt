@@ -10,9 +10,9 @@ import com.teamds.coffeecounter.databinding.FragmentStatChildBinding
 /**
  * A simple [Fragment] subclass.
  */
-class Stat_Day_Fragment : Fragment() {
+class StatMonthFragment : Fragment() {
 
-    lateinit var binding : FragmentStatChildBinding
+    private lateinit var binding : FragmentStatChildBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -21,7 +21,7 @@ class Stat_Day_Fragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentStatChildBinding.inflate(layoutInflater)
 
-        binding.textView2.text = "Day Fragment"
+        binding.textView2.text = "Month Fragment"
 
 
         return binding.root

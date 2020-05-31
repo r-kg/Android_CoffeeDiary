@@ -1,11 +1,15 @@
 package com.teamds.coffeecounter
 
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.transition.Slide
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.Window
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
@@ -21,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         //기본 Action Bar 설정
         setSupportActionBar(binding.mainActionbar.root as Toolbar);
@@ -55,12 +60,14 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
-            }
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
         })
+
+        //FAB 이벤트 리스너
+        binding.mainFab.setOnClickListener {
+            startActivity(Intent(this, AddActivity::class.java))
+        }
     }
 
 
@@ -71,8 +78,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.actionbar_setting){
+            startActivity(Intent(this, SettingActivity::class.java))
+        }
         return super.onOptionsItemSelected(item)
-
     }
 
     //ViewPager2 Adapter Inner Class

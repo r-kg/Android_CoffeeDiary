@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.teamds.coffeecounter.databinding.FragmentStatBinding
 
@@ -95,10 +94,10 @@ class StatFragment : Fragment() {
     private inner class ViewPagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa){
         override fun createFragment(position: Int): Fragment {
             return when(position){
-                0 -> Stat_Day_Fragment()
-                1 -> Stat_Week_Fragment()
-                2  -> Stat_Month_Fragment()
-                else -> Stat_Day_Fragment()
+                0 -> StatDayFragment()
+                1 -> StatWeekFragment()
+                2  -> StatMonthFragment()
+                else -> StatDayFragment()
             }
         }
         override fun getItemCount(): Int = 3
