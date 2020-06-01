@@ -53,7 +53,7 @@ class StatFragment : Fragment() {
         binding.statCkboxCaf.isChecked = true
 
         var fragPosition : Int = 0;
-        val dwmTextArray = arrayOf("일간","주간","월간")
+        val dwmTextArray = arrayOf("주간","요일","종류")
 
         val clickListener = View.OnClickListener { view ->
             when(view){
@@ -94,10 +94,10 @@ class StatFragment : Fragment() {
     private inner class ViewPagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa){
         override fun createFragment(position: Int): Fragment {
             return when(position){
-                0 -> StatDayFragment()
-                1 -> StatWeekFragment()
-                2  -> StatMonthFragment()
-                else -> StatDayFragment()
+                0 -> StatWeeklyFragment()
+                1 -> StatDayPieFragment()
+                2  -> StatCoffeePieFragment()
+                else -> StatWeeklyFragment()
             }
         }
         override fun getItemCount(): Int = 3

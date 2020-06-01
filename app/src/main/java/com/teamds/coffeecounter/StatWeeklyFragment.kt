@@ -12,7 +12,8 @@ import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.ValueFormatter
-import com.teamds.coffeecounter.databinding.FragmentStatChildBinding
+import com.github.mikephil.charting.utils.ColorTemplate
+import com.teamds.coffeecounter.databinding.FragmentStatWeeklyBinding
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -20,32 +21,35 @@ import java.util.concurrent.TimeUnit
 /**
  * A simple [Fragment] subclass.
  */
-class StatDayFragment : Fragment() {
+class StatWeeklyFragment : Fragment() {
 
-    private lateinit var binding : FragmentStatChildBinding
+    private lateinit var binding : FragmentStatWeeklyBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentStatChildBinding.inflate(layoutInflater)
-        binding.textView2.text = "Day Fragment"
-
+        binding = FragmentStatWeeklyBinding.inflate(layoutInflater)
+        binding.textView2.text = "Weekly"
 
         val barChart = binding.barChart
 
         val entryCups = mutableListOf<BarEntry>()
+        val entryLabels = mutableListOf<String>("6일전","5일전","4일전","3일전","그저께","어제","오늘")
         //test-code
-        entryCups.add(BarEntry(1f,1f))
-        entryCups.add(BarEntry(2f,5f))
-        entryCups.add(BarEntry(3f,0f))
-        entryCups.add(BarEntry(4f,5f))
+        entryCups.add(BarEntry(0f,1f))
+        entryCups.add(BarEntry(1f,5f))
+        entryCups.add(BarEntry(2f,0f))
+        entryCups.add(BarEntry(3f,2f))
+        entryCups.add(BarEntry(4f,3f))
+        entryCups.add(BarEntry(5f,6f))
+        entryCups.add(BarEntry(6f,1f))
 
         //test-code
 
         val entrySetCups = BarDataSet(entryCups, "잔")
-        entrySetCups.axisDependency = YAxis.AxisDependency.LEFT
+        entrySetCups.color = ColorTemplate.rgb("#9bc01c")
 
 
         val barData = BarData(entrySetCups)
@@ -56,6 +60,7 @@ class StatDayFragment : Fragment() {
 
         barChart.setScaleEnabled(false)
         barChart.setPinchZoom(false)
+        //barChart.setFitBars(true)
         barChart.axisRight.axisMinimum = 0f
         barChart.axisLeft.axisMinimum = 0f
         barChart.description=null
@@ -64,15 +69,15 @@ class StatDayFragment : Fragment() {
         barChart.xAxis.setDrawGridLines(false)
         barChart.xAxis.labelCount = entryCups.size
 
-        barChart.axisRight.setDrawLabels(false)
-
         barChart.xAxis.valueFormatter = object : ValueFormatter() {
-            private val mFormat: SimpleDateFormat = SimpleDateFormat("MMM dd", Locale.KOREA)
             override fun getFormattedValue(value: Float): String {
-                val millis: Long = TimeUnit.HOURS.toMillis(value.toLong())
-                return mFormat.format(Date(millis))
+                return entryLabels[value.toInt()]
             }
         }
+
+
+        barChart.axisRight.setDrawLabels(false)
+
 
 
         barChart.animateXY(0,800)
@@ -83,7 +88,10 @@ class StatDayFragment : Fragment() {
 
 
         return binding.root
+
+
     }
+
 }
 
 

@@ -19,6 +19,11 @@ class AddActivity : AppCompatActivity() {
         binding.addActionbar.actionbarText.text = "커피 추가"
         supportActionBar?.setDisplayShowTitleEnabled(false)         //기본 타이틀 비활성화
         supportActionBar?.setDisplayHomeAsUpEnabled(true)           //Back button 활성화
+
+
+
+
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
