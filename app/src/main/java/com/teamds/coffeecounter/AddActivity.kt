@@ -16,7 +16,7 @@ class AddActivity : AppCompatActivity() {
         setContentView(binding.root)
         
         setSupportActionBar(binding.addActionbar.root as Toolbar)
-        binding.addActionbar.actionbarText.text = "커피 추가"
+        binding.addActionbar.actionbarText.text = "커피 기록"
         supportActionBar?.setDisplayShowTitleEnabled(false)         //기본 타이틀 비활성화
         supportActionBar?.setDisplayHomeAsUpEnabled(true)           //Back button 활성화
 

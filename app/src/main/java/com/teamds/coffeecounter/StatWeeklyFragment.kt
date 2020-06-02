@@ -53,7 +53,7 @@ class StatWeeklyFragment : Fragment() {
 
 
         val barData = BarData(entrySetCups)
-        barData.barWidth = 0.2f
+        barData.barWidth = 0.35f
 
 
         barChart.data = barData

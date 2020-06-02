@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.teamds.coffeecounter.databinding.FragmentStatBinding
 
@@ -38,11 +39,11 @@ class StatFragment : Fragment() {
         }
 
         // increase this offset to show more of left/right
-        val offsetPx = 13.dpToPx(resources.displayMetrics)
+        val offsetPx = 11.dpToPx(resources.displayMetrics)
         binding.statPager.setPadding(offsetPx, offsetPx, offsetPx, offsetPx)
 
         // increase this offset to increase distance between 2 items
-        val pageMarginPx = 2.dpToPx(resources.displayMetrics)
+        val pageMarginPx = 10.dpToPx(resources.displayMetrics)
         val marginTransformer = MarginPageTransformer(pageMarginPx)
         binding.statPager.setPageTransformer(marginTransformer)
         */
