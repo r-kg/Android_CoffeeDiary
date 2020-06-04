@@ -60,6 +60,11 @@ class StatCoffeePieFragment : Fragment() {
 
         val pieData = PieData(pieDataSet)
         pieData.setValueTextSize(10f)
+        pieData.setValueFormatter(object : ValueFormatter(){
+            override fun getFormattedValue(value: Float): String {
+                return value.toInt().toString() + "잔"
+            }
+        })
 
         pieChart.data = pieData
         pieChart.invalidate()

@@ -68,6 +68,7 @@ class MainActivity : AppCompatActivity() {
         binding.mainFab.setOnClickListener {
             startActivity(Intent(this, AddActivity::class.java))
         }
+
     }
 
 

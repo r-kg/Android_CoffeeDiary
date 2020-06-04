@@ -20,8 +20,6 @@
             android:defaultValue="0"
             app:useSimpleSummaryProvider="true"
             />
-
-
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -36,7 +34,5 @@
             android:key="btn_feedback"/>
 
 
-
    </PreferenceCategory>
-
 </PreferenceScreen>
