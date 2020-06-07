@@ -50,23 +50,25 @@ class StatFragment : Fragment() {
 
         ///------------------------------------------------------------///
 
-        binding.statCkboxCup.isChecked = true
-        binding.statCkboxCaf.isChecked = true
 
         var fragPosition : Int = 0;
-        val dwmTextArray = arrayOf("주간","요일","종류")
+        val dwmTextArray = arrayOf("지난 7일간","월간 요일별","월간 종류별")
 
         val clickListener = View.OnClickListener { view ->
             when(view){
                 binding.statDwmButtonLeft ->{
                      if(fragPosition > 0 ){
+                         binding.statDwmButtonLeft.visibility=View.VISIBLE
                          fragPosition --;
                      }
+
                 }
                 binding.statDwmButtonRight -> {
                     if(fragPosition < 2){
+                        binding.statDwmButtonRight.visibility=View.VISIBLE
                         fragPosition ++;
                     }
+
                 }
             }
 
