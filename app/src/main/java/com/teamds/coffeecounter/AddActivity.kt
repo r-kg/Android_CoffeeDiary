@@ -20,6 +20,8 @@ class AddActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)         //기본 타이틀 비활성화
         supportActionBar?.setDisplayHomeAsUpEnabled(true)           //Back button 활성화
 
+        binding.seekbarSize.setIndicatorTextFormat("\${TICK_TEXT}")
+
 
 
 

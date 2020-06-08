@@ -13,4 +13,18 @@
         <item>2</item>
     </string-array>
 
+    <string-array name="seekbar_size_tick">
+        <item>캔(Short)</item>
+        <item>톨(Small)</item>
+        <item>그란데(Regular)</item>
+        <item>벤티(Large)</item>
+
+    </string-array>
+
+    <string-array name="seekbar_shot_tick">
+        <item>1(기본)</item>
+        <item>2</item>
+        <item>3+</item>
+    </string-array>
+
 </resources>

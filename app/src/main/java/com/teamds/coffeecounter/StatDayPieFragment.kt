@@ -47,42 +47,36 @@ class StatDayPieFragment : Fragment() {
         //test-code//
 
 
-
-
         val pieDataSet = PieDataSet(entry,"")
         val chartColors = ColorTemplate.VORDIPLOM_COLORS.toMutableList()
         chartColors.add(R.color.pastelBlue)
         chartColors.add(R.color.pastelViolet)
-        pieDataSet.sliceSpace = 2f
-        pieDataSet.selectionShift = 5f
-        pieDataSet.colors = chartColors
-        pieDataSet.yValuePosition=PieDataSet.ValuePosition.OUTSIDE_SLICE
 
+        pieDataSet.apply {
+            sliceSpace = 2f
+            selectionShift = 5f
+            colors = chartColors
+            yValuePosition=PieDataSet.ValuePosition.OUTSIDE_SLICE
+            valueTextSize = 11f
+            valueFormatter = object : ValueFormatter(){
+                override fun getFormattedValue(value: Float): String {
+                    return value.toInt().toString() + "잔"
+                }
+            }
+        }
 
         val pieData = PieData(pieDataSet)
-        pieData.setValueTextSize(11f)
-        pieData.setValueFormatter(object : ValueFormatter(){
-            override fun getFormattedValue(value: Float): String {
-                return value.toInt().toString() + "잔"
-            }
-        })
-
-
-        pieChart.data = pieData
-        pieChart.description=null
-        pieChart.holeRadius=55f
-        pieChart.centerText="이번달\n 요일별 커피 소비량"
-        pieChart.setCenterTextSize(13f)
-        pieChart.setEntryLabelColor(Color.BLACK)
-        pieChart.animateY(1000, Easing.EaseOutCubic)
+        pieChart.apply {
+            data = pieData
+            description=null
+            holeRadius=55f
+            centerText="이번달\n 요일별 커피 소비량"
+            setCenterTextSize(13f)
+            setEntryLabelColor(Color.BLACK)
+            animateY(1000, Easing.EaseOutCubic)
+        }
         pieChart.invalidate()
-
-
-
 
         return binding.root
     }
-
-
-
 }
