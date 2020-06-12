@@ -14,6 +14,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import androidx.room.Room
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -26,11 +27,13 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //Room 설정
+
+
 
         //기본 Action Bar 설정
         setSupportActionBar(binding.mainActionbar.root as Toolbar);
         supportActionBar?.setDisplayShowTitleEnabled(false)         //기본 타이틀 비활성화
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)           //Back button 활성화
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_home)  //Back button ic -> Home ic
 
         //Tab Layout Data Array
@@ -46,8 +49,8 @@ class MainActivity : AppCompatActivity() {
         
         //ViewPager와 TabLayout 연결
         TabLayoutMediator(binding.mainTab, binding.mainViewpager){tab, position ->
-            tab.text = tabLayoutTextArray[position]
-            //tab.setIcon(tabLayoutIconArray[position])
+            //tab.text = tabLayoutTextArray[position]
+            tab.setIcon(tabLayoutIconArray[position])
         }.attach()
         
         //TabLayout 이벤트 리스너

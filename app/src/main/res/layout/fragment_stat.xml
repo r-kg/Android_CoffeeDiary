@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     tools:context=".StatFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/stat_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
+        android:background="@android:color/white"
         android:minHeight="?attr/actionBarSize"
+        android:elevation="4dp"
         android:theme="?attr/actionBarTheme"
         app:contentInsetStart="0dp"
         app:contentInsetLeft="0dp"

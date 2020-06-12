@@ -39,36 +39,33 @@ class StatFragment : Fragment() {
         }
 
         // increase this offset to show more of left/right
-        val offsetPx = 11.dpToPx(resources.displayMetrics)
+        val offsetPx = 15.dpToPx(resources.displayMetrics)
         binding.statPager.setPadding(offsetPx, offsetPx, offsetPx, offsetPx)
 
         // increase this offset to increase distance between 2 items
-        val pageMarginPx = 10.dpToPx(resources.displayMetrics)
+        val pageMarginPx = 8.dpToPx(resources.displayMetrics)
         val marginTransformer = MarginPageTransformer(pageMarginPx)
         binding.statPager.setPageTransformer(marginTransformer)
-        */
-
+         */
         ///------------------------------------------------------------///
 
 
         var fragPosition : Int = 0;
+        binding.statDwmButtonLeft.visibility=View.INVISIBLE
         val dwmTextArray = arrayOf("지난 7일간","월간 요일별","월간 종류별")
 
         val clickListener = View.OnClickListener { view ->
             when(view){
                 binding.statDwmButtonLeft ->{
                      if(fragPosition > 0 ){
-                         binding.statDwmButtonLeft.visibility=View.VISIBLE
                          fragPosition --;
                      }
 
                 }
                 binding.statDwmButtonRight -> {
                     if(fragPosition < 2){
-                        binding.statDwmButtonRight.visibility=View.VISIBLE
                         fragPosition ++;
                     }
-
                 }
             }
 
@@ -83,6 +80,10 @@ class StatFragment : Fragment() {
                 super.onPageScrolled(position, positionOffset, positionOffsetPixels)
                 fragPosition = position
                 binding.statDwmText.text = dwmTextArray[fragPosition]
+                if(position == 0) binding.statDwmButtonLeft.visibility = View.INVISIBLE
+                else binding.statDwmButtonLeft.visibility = View.VISIBLE
+                if(position == 2) binding.statDwmButtonRight.visibility = View.INVISIBLE
+                else binding.statDwmButtonRight.visibility = View.VISIBLE
             }
         })
 

@@ -25,6 +25,8 @@
         android:id="@+id/main_tab"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:elevation="4dp"
+        android:background="@android:color/white"
         app:layout_constraintTop_toBottomOf="@id/main_actionbar"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">

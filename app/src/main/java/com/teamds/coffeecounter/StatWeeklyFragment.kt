@@ -14,9 +14,6 @@ import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.teamds.coffeecounter.databinding.FragmentStatWeeklyBinding
-import java.text.SimpleDateFormat
-import java.util.*
-import java.util.concurrent.TimeUnit
 
 /**
  * A simple [Fragment] subclass.
@@ -45,53 +42,41 @@ class StatWeeklyFragment : Fragment() {
         entryCups.add(BarEntry(4f,3f))
         entryCups.add(BarEntry(5f,6f))
         entryCups.add(BarEntry(6f,1f))
-
         //test-code
 
         val entrySetCups = BarDataSet(entryCups, "잔")
-        entrySetCups.color = ColorTemplate.rgb("#9bc01c")
+        entrySetCups.color = ColorTemplate.rgb("#ff7b22")
 
 
         val barData = BarData(entrySetCups)
         barData.barWidth = 0.35f
 
-
-        barChart.data = barData
-
-        barChart.setScaleEnabled(false)
-        barChart.setPinchZoom(false)
-        //barChart.setFitBars(true)
-        barChart.axisRight.axisMinimum = 0f
-        barChart.axisLeft.axisMinimum = 0f
-        barChart.description=null
-
-        barChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
-        barChart.xAxis.setDrawGridLines(false)
-        barChart.xAxis.labelCount = entryCups.size
-
-        barChart.xAxis.valueFormatter = object : ValueFormatter() {
-            override fun getFormattedValue(value: Float): String {
-                return entryLabels[value.toInt()]
+        barChart.apply {
+            setScaleEnabled(false)
+            setPinchZoom(false)
+            animateXY(0,800)
+            description=null
+            legend.verticalAlignment = Legend.LegendVerticalAlignment.TOP
+            legend.horizontalAlignment = Legend.LegendHorizontalAlignment.LEFT
+            axisLeft.axisMinimum = 0f
+            axisRight.axisMinimum = 0f
+            axisRight.setDrawLabels(false)
+            xAxis.setDrawGridLines(false)
+            xAxis.position = XAxis.XAxisPosition.BOTTOM
+            xAxis.labelCount = entryCups.size
+            xAxis.valueFormatter = object : ValueFormatter() {
+                override fun getFormattedValue(value: Float): String {
+                    return entryLabels[value.toInt()]
+                }
             }
         }
 
-
-        barChart.axisRight.setDrawLabels(false)
-
-
-
-        barChart.animateXY(0,800)
+        barChart.data = barData
         barChart.invalidate()
-
-        barChart.legend.verticalAlignment = Legend.LegendVerticalAlignment.TOP
-        barChart.legend.horizontalAlignment = Legend.LegendHorizontalAlignment.LEFT
-
 
         return binding.root
 
-
     }
-
 }
 
 

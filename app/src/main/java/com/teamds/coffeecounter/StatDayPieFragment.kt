@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import com.github.mikephil.charting.animation.Easing
+import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
@@ -31,6 +33,17 @@ class StatDayPieFragment : Fragment() {
         binding.textView2.text = "Daily Pie"
 
         val pieChart = binding.dayPiechart
+        pieChart.apply {
+            description=null
+            holeRadius=55f
+            centerText="이번달\n 요일별 커피 소비량"
+            legend.verticalAlignment = Legend.LegendVerticalAlignment.TOP
+            legend.horizontalAlignment = Legend.LegendHorizontalAlignment.LEFT
+            setCenterTextSize(13f)
+            setEntryLabelColor(Color.BLACK)
+            animateY(1000, Easing.EaseOutCubic)
+        }
+
 
         //pieChart.setUsePercentValues(true)
 
@@ -48,9 +61,13 @@ class StatDayPieFragment : Fragment() {
 
 
         val pieDataSet = PieDataSet(entry,"")
-        val chartColors = ColorTemplate.VORDIPLOM_COLORS.toMutableList()
-        chartColors.add(R.color.pastelBlue)
-        chartColors.add(R.color.pastelViolet)
+        val chartColors = ColorTemplate.JOYFUL_COLORS.toMutableList()
+
+        chartColors.apply {
+            add(ContextCompat.getColor(requireContext(), R.color.pastelBlue))
+            add(ContextCompat.getColor(requireContext(), R.color.pastelViolet))
+        }
+
 
         pieDataSet.apply {
             sliceSpace = 2f
@@ -66,15 +83,7 @@ class StatDayPieFragment : Fragment() {
         }
 
         val pieData = PieData(pieDataSet)
-        pieChart.apply {
-            data = pieData
-            description=null
-            holeRadius=55f
-            centerText="이번달\n 요일별 커피 소비량"
-            setCenterTextSize(13f)
-            setEntryLabelColor(Color.BLACK)
-            animateY(1000, Easing.EaseOutCubic)
-        }
+        pieChart.data = pieData
         pieChart.invalidate()
 
         return binding.root

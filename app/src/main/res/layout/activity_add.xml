@@ -27,12 +27,12 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="208dp"
+        android:layout_marginTop="196dp"
         android:text="사이즈"
         android:textColor="@color/colorAccent"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintHorizontal_bias="0.043"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/add_actionbar" />
 
@@ -40,7 +40,7 @@
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="380dp"
+        android:layout_marginTop="360dp"
         android:text="샷 추가"
         android:textColor="@color/colorAccent"
         android:textSize="22sp"
@@ -54,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="마신 커피의 종류를 선택해주세요"
-        android:textSize="18sp"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/textView3"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -63,7 +63,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="마신 커피의 사이즈를 선택해주세요"
-        android:textSize="18sp"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -72,18 +72,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="샷을 추가하셨다면 선택해주세요"
-        android:textSize="18sp"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/textView10"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
 
     <com.warkiz.widget.IndicatorStayLayout
         android:id="@+id/indicatorStayLayout"
         android:layout_width="321dp"
         android:layout_height="83dp"
         android:layout_marginTop="36dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView10"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6">
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintVertical_bias="0.217">
 
         <com.warkiz.widget.IndicatorSeekBar
             android:id="@+id/seekbar_size"
@@ -94,10 +98,10 @@
             app:isb_min="0"
             app:isb_seek_smoothly="true"
             app:isb_show_indicator="rounded_rectangle"
+            app:isb_show_tick_marks_type="oval"
             app:isb_show_tick_texts="true"
             app:isb_thumb_color="@color/colorPrimaryDark"
             app:isb_thumb_size="20dp"
-            app:isb_tick_marks_drawable="@drawable/ic_size_temp"
             app:isb_tick_marks_size="13dp"
             app:isb_tick_marks_swept_hide="true"
             app:isb_tick_texts_array="@array/seekbar_size_tick"
@@ -109,6 +113,89 @@
             app:isb_track_progress_size="6dp" />
 
     </com.warkiz.widget.IndicatorStayLayout>
+
+    <com.warkiz.widget.IndicatorStayLayout
+        android:id="@+id/indicatorStayLayout2"
+        android:layout_width="321dp"
+        android:layout_height="83dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10">
+
+        <com.warkiz.widget.IndicatorSeekBar
+            android:id="@+id/seekbar_shot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:isb_indicator_color="@color/colorAccent"
+            app:isb_max="2"
+            app:isb_min="0"
+            app:isb_seek_smoothly="true"
+            app:isb_show_indicator="rounded_rectangle"
+            app:isb_show_tick_marks_type="oval"
+            app:isb_show_tick_texts="true"
+            app:isb_thumb_color="@color/colorPrimaryDark"
+            app:isb_thumb_size="20dp"
+            app:isb_tick_marks_size="13dp"
+            app:isb_tick_marks_swept_hide="true"
+            app:isb_tick_texts_array="@array/seekbar_shot_tick"
+
+            app:isb_tick_texts_color="@android:color/black"
+            app:isb_tick_texts_size="0sp"
+            app:isb_ticks_count="3"
+            app:isb_track_background_size="5dp"
+            app:isb_track_progress_color="@color/colorAccent"
+            app:isb_track_progress_size="6dp" />
+
+    </com.warkiz.widget.IndicatorStayLayout>
+
+    <RadioGroup
+        android:id="@+id/add_radio1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+        <RadioButton
+            android:id="@+id/btn_americano"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="커피" />
+
+        <RadioButton
+            android:id="@+id/btn_drink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="에너지 드링크" />
+
+        <RadioButton
+            android:id="@+id/btn_tea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="차" />
+    </RadioGroup>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/add_btnconfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="110dp"
+        android:text="추가"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/indicatorStayLayout2"
+        app:layout_constraintVertical_bias="0.279" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
