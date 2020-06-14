@@ -7,6 +7,26 @@
     android:background="@color/colorBackground"
     tools:context=".HomeFragment">
 
+    <androidx.viewpager2.widget.ViewPager2
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="33dp"
+        android:layout_marginBottom="17dp"
+        app:layout_constraintBottom_toTopOf="@+id/main_card_caf"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            
+        </fragment>
+
+    </androidx.viewpager2.widget.ViewPager2>
+
     <androidx.cardview.widget.CardView
         android:id="@+id/main_card_cup"
         android:layout_width="0dp"

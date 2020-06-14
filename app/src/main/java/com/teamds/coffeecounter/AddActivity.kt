@@ -12,7 +12,6 @@ import com.teamds.coffeecounter.databinding.ActivityAddBinding
 class AddActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityAddBinding
-    lateinit var db : RoomDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +19,12 @@ class AddActivity : AppCompatActivity() {
         setContentView(binding.root)
         
         setSupportActionBar(binding.addActionbar.root as Toolbar)
+
+        var db = Room.databaseBuilder(
+            applicationContext,
+            AppDatabase::class.java, "database-name"
+        ).build()
+
 
 
         supportActionBar?.apply {
@@ -31,19 +36,13 @@ class AddActivity : AppCompatActivity() {
             seekbarSize.setIndicatorTextFormat("\${TICK_TEXT}")
             seekbarShot.setIndicatorTextFormat("\${TICK_TEXT}")
             addActionbar.actionbarText.text = "커피 기록"
-            addBtnconfirm.visibility = View.GONE
+            //addBtnconfirm.visibility = View.GONE
         }
 
         binding.addRadio1.setOnCheckedChangeListener { group, checkedId ->
-            binding.addBtnconfirm.visibility = View.VISIBLE
+            //binding.addBtnconfirm.visibility = View.VISIBLE
+
         }
-
-        db = Room.databaseBuilder(
-            applicationContext,
-            AppDatabase::class.java, "database-name"
-        ).build()
-
-        
 
 
     }
