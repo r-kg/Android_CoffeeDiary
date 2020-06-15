@@ -6,10 +6,8 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.transition.Slide
-import android.view.Gravity
-import android.view.Menu
-import android.view.MenuItem
-import android.view.Window
+import android.view.*
+import android.widget.FrameLayout
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
@@ -52,6 +50,7 @@ class MainActivity : AppCompatActivity() {
             //tab.text = tabLayoutTextArray[position]
             tab.setIcon(tabLayoutIconArray[position])
         }.attach()
+
         
         //TabLayout 이벤트 리스너
         binding.mainTab.addOnTabSelectedListener(object:TabLayout.OnTabSelectedListener{
@@ -98,5 +97,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
         override fun getItemCount(): Int = 2
+
     }
 }
