@@ -1,4 +1,4 @@
-package com.teamds.coffeecounter
+package com.teamds.coffeecounter.stat
 
 import android.graphics.Color
 import android.os.Bundle
@@ -14,6 +14,7 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.github.mikephil.charting.utils.ColorTemplate
+import com.teamds.coffeecounter.R
 import com.teamds.coffeecounter.databinding.FragmentStatDayPieBinding
 
 /**
@@ -64,8 +65,12 @@ class StatDayPieFragment : Fragment() {
         val chartColors = ColorTemplate.JOYFUL_COLORS.toMutableList()
 
         chartColors.apply {
-            add(ContextCompat.getColor(requireContext(), R.color.pastelBlue))
-            add(ContextCompat.getColor(requireContext(), R.color.pastelViolet))
+            add(ContextCompat.getColor(requireContext(),
+                R.color.pastelBlue
+            ))
+            add(ContextCompat.getColor(requireContext(),
+                R.color.pastelViolet
+            ))
         }
 
 

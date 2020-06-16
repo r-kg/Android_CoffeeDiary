@@ -1,6 +1,5 @@
-package com.teamds.coffeecounter
+package com.teamds.coffeecounter.room
 
-import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverter

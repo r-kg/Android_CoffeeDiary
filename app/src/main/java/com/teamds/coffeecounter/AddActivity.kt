@@ -3,10 +3,9 @@ package com.teamds.coffeecounter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.room.Room
-import androidx.room.RoomDatabase
+import com.teamds.coffeecounter.room.AppDatabase
 import com.teamds.coffeecounter.databinding.ActivityAddBinding
 
 class AddActivity : AppCompatActivity() {

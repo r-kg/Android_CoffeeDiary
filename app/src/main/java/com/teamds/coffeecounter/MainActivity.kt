@@ -1,22 +1,18 @@
 package com.teamds.coffeecounter
 
-import android.app.ActivityOptions
 import android.content.Intent
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.transition.Slide
 import android.view.*
-import android.widget.FrameLayout
-import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.room.Room
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.teamds.coffeecounter.databinding.ActivityMainBinding
+import com.teamds.coffeecounter.main.HomeFragment
+import com.teamds.coffeecounter.main.StatFragment
 
 class MainActivity : AppCompatActivity() {
 

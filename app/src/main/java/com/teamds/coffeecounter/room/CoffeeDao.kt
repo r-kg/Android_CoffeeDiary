@@ -1,4 +1,4 @@
-package com.teamds.coffeecounter
+package com.teamds.coffeecounter.room
 
 import androidx.room.Dao
 import androidx.room.Delete
