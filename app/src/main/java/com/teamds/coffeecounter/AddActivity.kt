@@ -7,6 +7,8 @@ import androidx.appcompat.widget.Toolbar
 import androidx.room.Room
 import com.teamds.coffeecounter.room.AppDatabase
 import com.teamds.coffeecounter.databinding.ActivityAddBinding
+import com.teamds.coffeecounter.room.CoffeeDao
+import com.teamds.coffeecounter.room.CoffeeData
 
 class AddActivity : AppCompatActivity() {
 
@@ -23,12 +25,11 @@ class AddActivity : AppCompatActivity() {
             applicationContext,
             AppDatabase::class.java, "database-name"
         ).build()
+        
 
-
-
-        supportActionBar?.apply {
-            setDisplayShowTitleEnabled(false)         //기본 타이틀 비활성화
-            setDisplayHomeAsUpEnabled(true)           //Back button 활성화
+        supportActionBar?.let {
+            it.setDisplayShowTitleEnabled(false)         //기본 타이틀 비활성화
+            it.setDisplayHomeAsUpEnabled(true)           //Back button 활성화
         }
 
         binding.apply {
@@ -45,8 +46,6 @@ class AddActivity : AppCompatActivity() {
 
 
     }
-
-
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId == android.R.id.home){
