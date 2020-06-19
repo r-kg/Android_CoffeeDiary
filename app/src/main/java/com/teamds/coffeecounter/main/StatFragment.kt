@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.teamds.coffeecounter.databinding.FragmentStatBinding
 import com.teamds.coffeecounter.stat.StatCoffeePieFragment
@@ -45,9 +46,10 @@ class StatFragment : Fragment() {
         binding.statPager.setPadding(offsetPx, offsetPx, offsetPx, offsetPx)
 
         // increase this offset to increase distance between 2 items
-        val pageMarginPx = 8.dpToPx(resources.displayMetrics)
+        val pageMarginPx = 7.dpToPx(resources.displayMetrics)
         val marginTransformer = MarginPageTransformer(pageMarginPx)
         binding.statPager.setPageTransformer(marginTransformer)
+
          */
         ///------------------------------------------------------------///
 
