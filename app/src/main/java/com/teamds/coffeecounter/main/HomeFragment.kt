@@ -7,12 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.teamds.coffeecounter.HomeStatus
-import com.teamds.coffeecounter.R
+import androidx.viewpager2.widget.ViewPager2
+import com.teamds.coffeecounter.home.HomeStatusFragment
 import com.teamds.coffeecounter.databinding.FragmentHomeBinding
-import com.teamds.coffeecounter.stat.StatCoffeePieFragment
-import com.teamds.coffeecounter.stat.StatDayPieFragment
-import com.teamds.coffeecounter.stat.StatWeeklyFragment
+import com.teamds.coffeecounter.home.HomeAddFragment1
+import com.teamds.coffeecounter.home.HomeAddFragment2
 
 /**
  * A simple [Fragment] subclass.
@@ -30,20 +29,32 @@ class HomeFragment : Fragment() {
 
         val adapter = ViewPagerAdapter(this.requireActivity())
         binding.homeViewpager.adapter = adapter
-        binding.homeViewpager.isUserInputEnabled=false
+        //binding.homeViewpager.isUserInputEnabled=false
 
+        binding.homeViewpager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+                super.onPageScrolled(position, positionOffset, positionOffsetPixels)
 
+            }
+        })
+        
         return binding.root
     }
 
     private inner class ViewPagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa){
         override fun createFragment(position: Int): Fragment {
             return when(position){
-                0 -> HomeStatus()
-                else -> HomeStatus()
+                0 -> HomeStatusFragment()
+                1 -> HomeAddFragment1()
+                2 -> HomeAddFragment2()
+                else -> HomeStatusFragment()
             }
         }
-        override fun getItemCount(): Int = 1
+        override fun getItemCount(): Int = 3
     }
 
 }
