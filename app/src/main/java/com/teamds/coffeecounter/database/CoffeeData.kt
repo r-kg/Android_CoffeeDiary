@@ -1,4 +1,4 @@
-package com.teamds.coffeecounter.room
+package com.teamds.coffeecounter.database
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

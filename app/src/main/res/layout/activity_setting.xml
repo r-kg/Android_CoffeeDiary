@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingActivity">
+    tools:context=".activity.SettingActivity">
 
     <include
         android:id="@+id/setting_actionbar"
-        layout="@layout/app_actionbar"/>
+        layout="@layout/app_actionbar" />
 
     <FrameLayout
         android:id="@+id/content_preference"

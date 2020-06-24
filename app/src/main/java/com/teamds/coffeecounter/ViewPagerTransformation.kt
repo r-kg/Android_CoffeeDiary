@@ -6,6 +6,10 @@ import androidx.annotation.RequiresApi
 import androidx.viewpager2.widget.ViewPager2
 import kotlin.math.abs
 
+
+/*
+Viewpager2 Page간 전환 애니메이션이 작성되어 있는 스크립트
+ */
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 class ViewPagerTransformation : ViewPager2.PageTransformer {
     override fun transformPage(

@@ -1,4 +1,4 @@
-package com.teamds.coffeecounter.main
+package com.teamds.coffeecounter.fragment.main
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
-import com.teamds.coffeecounter.home.HomeStatusFragment
+import com.teamds.coffeecounter.fragment.home.HomeFragment2
+import com.teamds.coffeecounter.fragment.home.HomeFragment3
+import com.teamds.coffeecounter.fragment.home.HomeFragment1
 import com.teamds.coffeecounter.databinding.FragmentHomeBinding
-import com.teamds.coffeecounter.home.HomeAddFragment1
-import com.teamds.coffeecounter.home.HomeAddFragment2
 
 /**
  * A simple [Fragment] subclass.
@@ -48,10 +48,10 @@ class HomeFragment : Fragment() {
     private inner class ViewPagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa){
         override fun createFragment(position: Int): Fragment {
             return when(position){
-                0 -> HomeStatusFragment()
-                1 -> HomeAddFragment1()
-                2 -> HomeAddFragment2()
-                else -> HomeStatusFragment()
+                0 -> HomeFragment1()
+                1 -> HomeFragment2()
+                2 -> HomeFragment3()
+                else -> HomeFragment1()
             }
         }
         override fun getItemCount(): Int = 3

@@ -1,4 +1,4 @@
-package com.teamds.coffeecounter.stat
+package com.teamds.coffeecounter.fragment.stat
 
 import android.os.Bundle
 import android.view.LayoutInflater

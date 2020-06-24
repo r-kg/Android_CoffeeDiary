@@ -1,4 +1,4 @@
-package com.teamds.coffeecounter
+package com.teamds.coffeecounter.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,11 +8,11 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.teamds.coffeecounter.fragment.main.HomeFragment
+import com.teamds.coffeecounter.R
+import com.teamds.coffeecounter.fragment.main.StatFragment
 import com.teamds.coffeecounter.databinding.ActivityMainBinding
-import com.teamds.coffeecounter.main.HomeFragment
-import com.teamds.coffeecounter.main.StatFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,18 +21,19 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //Room 설정
-
-
-
         //기본 Action Bar 설정
         setSupportActionBar(binding.mainActionbar.root as Toolbar);
-        supportActionBar?.setDisplayShowTitleEnabled(false)         //기본 타이틀 비활성화
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_home)  //Back button ic -> Home ic
+        supportActionBar?.run{
+            setDisplayShowTitleEnabled(false)         //기본 타이틀 비활성화
+            setHomeAsUpIndicator(R.drawable.ic_home)  //Back button ic -> Home ic
+        }
 
         //Tab Layout Data Array
         val tabLayoutTextArray = arrayOf("홈","통계")
-        val tabLayoutIconArray = arrayOf(R.drawable.ic_home,R.drawable.ic_timeline)
+        val tabLayoutIconArray = arrayOf(
+            R.drawable.ic_home,
+            R.drawable.ic_timeline
+        )
         
         //ViewPager와 Adapter연결
         val adapter = ViewPagerAdapter(this)
@@ -46,26 +47,6 @@ class MainActivity : AppCompatActivity() {
             //tab.text = tabLayoutTextArray[position]
             tab.setIcon(tabLayoutIconArray[position])
         }.attach()
-
-        
-        //TabLayout 이벤트 리스너
-        binding.mainTab.addOnTabSelectedListener(object:TabLayout.OnTabSelectedListener{
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                if(tab==null) binding.mainFab.hide()
-                else{
-                    if(tab.position==0) binding.mainFab.show()
-                    else binding.mainFab.hide()
-                }
-            }
-
-            override fun onTabReselected(tab: TabLayout.Tab?) {}
-            override fun onTabUnselected(tab: TabLayout.Tab?) {}
-        })
-
-        //FAB 이벤트 리스너
-        binding.mainFab.setOnClickListener {
-            startActivity(Intent(this, AddActivity::class.java))
-        }
 
     }
 

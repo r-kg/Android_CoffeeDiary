@@ -11,9 +11,9 @@
         android:theme="@style/AppTheme"
         android:hardwareAccelerated="true">
 
-        <activity android:name=".SettingActivity" />
+        <activity android:name=".activity.SettingActivity" />
         <activity android:name=".AddActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

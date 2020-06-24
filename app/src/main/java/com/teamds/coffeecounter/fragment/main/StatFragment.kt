@@ -1,4 +1,4 @@
-package com.teamds.coffeecounter.main
+package com.teamds.coffeecounter.fragment.main
 
 import android.os.Bundle
 import android.util.DisplayMetrics
@@ -8,12 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.teamds.coffeecounter.databinding.FragmentStatBinding
-import com.teamds.coffeecounter.stat.StatCoffeePieFragment
-import com.teamds.coffeecounter.stat.StatDayPieFragment
-import com.teamds.coffeecounter.stat.StatWeeklyFragment
+import com.teamds.coffeecounter.fragment.stat.StatCoffeePieFragment
+import com.teamds.coffeecounter.fragment.stat.StatDayPieFragment
+import com.teamds.coffeecounter.fragment.stat.StatWeeklyFragment
 
 /**
  * A simple [Fragment] subclass.

@@ -1,15 +1,11 @@
-package com.teamds.coffeecounter
+package com.teamds.coffeecounter.activity
 
-import android.app.ActivityOptions
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.transition.Slide
-import android.view.Gravity
 import android.view.MenuItem
-import android.view.Window
 import androidx.appcompat.widget.Toolbar
 import androidx.preference.PreferenceFragmentCompat
+import com.teamds.coffeecounter.R
 import com.teamds.coffeecounter.databinding.ActivitySettingBinding
 
 class SettingActivity : AppCompatActivity() {
@@ -18,20 +14,31 @@ class SettingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivitySettingBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportFragmentManager.beginTransaction().replace(R.id.content_preference,SettingFragment()).commit()
 
-        setSupportActionBar(binding.settingActionbar.root as Toolbar)
         binding.settingActionbar.actionbarText.text = "환경설정"
-        supportActionBar?.setDisplayShowTitleEnabled(false)         //기본 타이틀 비활성화
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)           //Back button 활성화
-    }
+        setSupportActionBar(binding.settingActionbar.root as Toolbar)
+        supportActionBar?.run {
+            setDisplayShowTitleEnabled(false)   //기본 타이틀 비활성화
+            setDisplayHomeAsUpEnabled(true)     //Back button 활성화
+        }
+        
+        //Preference Fragment 로부터 환경설정 XML 불러오기
+        supportFragmentManager.beginTransaction().replace(
+            R.id.content_preference,
+            SettingFragment()
+        ).commit()
 
+    }
+    
+    //Toolbar back button menu 리스너
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId == android.R.id.home){
-            finish()
+            finish()        // Activity 종료
         }
         return super.onOptionsItemSelected(item)
     }
+
+
 }
 
 class SettingFragment : PreferenceFragmentCompat(){
@@ -39,3 +46,5 @@ class SettingFragment : PreferenceFragmentCompat(){
         setPreferencesFromResource(R.xml.main_preference, rootKey)
     }
 }
+
+

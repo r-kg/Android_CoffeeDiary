@@ -8,7 +8,7 @@
     app:cardElevation="5dp"
     app:cardUseCompatPadding="true"
     app:cardCornerRadius="10dp"
-    tools:context=".home.HomeAddFragment2">
+    tools:context=".fragment.home.HomeFragment3">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
