@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
+    android:background="@android:color/white"
+    app:cardElevation="5dp"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="10dp"
+    tools:context=".fragment.home.HomeFragment3">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/text_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:text="샷을 추가하셨다면 선택해주세요"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.warkiz.widget.IndicatorStayLayout
+            android:id="@+id/indicatorStayLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginRight="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.533"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_label">
+
+            <com.warkiz.widget.IndicatorSeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:isb_indicator_color="@color/colorAccent"
+                app:isb_max="3"
+                app:isb_min="1"
+                app:isb_progress="1"
+                app:isb_seek_smoothly="true"
+                app:isb_show_indicator="rounded_rectangle"
+                app:isb_show_tick_marks_type="oval"
+                app:isb_show_tick_texts="true"
+                app:isb_thumb_color="@color/colorAccent"
+                app:isb_thumb_size="20dp"
+                app:isb_tick_marks_color="@color/colorAccent"
+                app:isb_tick_texts_array="@array/seekbar_shot_tick"
+                app:isb_tick_texts_color="@color/colorAccent"
+                app:isb_tick_texts_size="15sp"
+                app:isb_ticks_count="3"
+                app:isb_track_progress_color="@color/colorAccent"
+                app:isb_track_progress_size="4dp" />
+        </com.warkiz.widget.IndicatorStayLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="@color/colorAccent"
+            android:elevation="5dp"
+            android:text="Done!"
+            app:cornerRadius="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/indicatorStayLayout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

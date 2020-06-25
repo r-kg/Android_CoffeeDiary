@@ -7,33 +7,19 @@
     android:background="@color/colorBackground"
     tools:context=".fragment.main.HomeFragment">
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/home_viewpager"
-        android:layout_width="0dp"
-        android:layout_height="250dp"
-        android:minHeight="250dp"
-        android:layout_marginLeft="33dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginRight="33dp"
-        android:layout_marginBottom="17dp"
-        app:layout_constraintBottom_toTopOf="@+id/main_card_caf"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-        
-    </androidx.viewpager2.widget.ViewPager2>
 
 
-    <androidx.cardview.widget.CardView
+
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/main_card_caf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         app:cardElevation="5dp"
+        android:backgroundTint="@android:color/white"
         app:cardBackgroundColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/home_viewpager">
+        app:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -94,7 +80,7 @@
                 app:layout_constraintTop_toTopOf="@+id/text_today_caf" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 
     <TextView
