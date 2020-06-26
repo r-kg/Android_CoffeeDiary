@@ -8,18 +8,98 @@
     tools:context=".fragment.main.HomeFragment">
 
 
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/main_card_cup"
+        android:layout_width="match_parent"
+        android:layout_height="225dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/text_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="10dp"
+            android:text="Today's Coffee"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/image_label"
+                android:layout_width="wrap_content"
+                android:layout_height="150dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/text_label"
+                app:layout_constraintTop_toBottomOf="@+id/text_label"
+                app:layout_constraintVertical_bias="0.173"
+                app:srcCompat="@drawable/img_coffee" />
+
+            <TextView
+                android:id="@+id/text_today_cup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:gravity="center_horizontal"
+                android:text="2"
+                android:textColor="@android:color/black"
+                android:textSize="85sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.486"
+                app:layout_constraintStart_toEndOf="@+id/image_label"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:text="잔"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/text_today_cup"
+            app:layout_constraintStart_toEndOf="@+id/text_today_cup" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="88dp"
+            android:text="마셨어요"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="@+id/text_today_cup"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/text_today_cup"
+            app:layout_constraintTop_toTopOf="@+id/text_today_cup" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/main_card_caf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="16dp"
         app:cardElevation="5dp"
-        android:backgroundTint="@android:color/white"
         app:cardBackgroundColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_card_cup">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -87,7 +167,7 @@
         android:id="@+id/text_today_comment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:gravity="center_horizontal"
         android:text="Today's comment"
         android:textSize="16sp"

@@ -8,6 +8,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.teamds.coffeecounter.fragment.main.HomeFragment
 import com.teamds.coffeecounter.R
@@ -38,20 +39,39 @@ class MainActivity : AppCompatActivity() {
         //ViewPager와 Adapter연결
         val adapter = ViewPagerAdapter(this)
         //val transformation = ViewPagerTransformation()
-        binding.mainViewpager.adapter = adapter
         //binding.mainViewpager.setPageTransformer(transformation)
+        binding.mainViewpager.adapter = adapter
         binding.mainViewpager.isUserInputEnabled = false    //Disable Swiping
         
         //ViewPager와 TabLayout 연결
         TabLayoutMediator(binding.mainTab, binding.mainViewpager){tab, position ->
-            //tab.text = tabLayoutTextArray[position]
             tab.setIcon(tabLayoutIconArray[position])
+            //tab.text = tabLayoutTextArray[position]
         }.attach()
+
+
+        //TabLayout 전환시 Floating Action Button Visibility 설정
+        binding.mainTab.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                when(tab?.position){
+                    0 -> binding.fabAdd.show()
+                    1 -> binding.fabAdd.hide()
+                }
+            }
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+        })
+
+        //Floating Action Button 액티비티 전환 리스너
+        binding.fabAdd.setOnClickListener {
+            val intent = Intent(this, AddActivity::class.java)
+            startActivity(intent)
+        }
 
     }
 
 
-    //App ActionBar menu
+    //앱바 환경설정 아이콘
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.app_actionbar_menu, menu)
         return super.onCreateOptionsMenu(menu)
