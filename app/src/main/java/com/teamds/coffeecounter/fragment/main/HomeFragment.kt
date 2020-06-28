@@ -24,9 +24,8 @@ class HomeFragment : Fragment(),HomePresenter.View {
         savedInstanceState: Bundle?
     ): View? {
 
-        val presenter = HomePresenter(this)
-
         binding = FragmentHomeBinding.inflate(layoutInflater)
+        presenter = HomePresenter(this)
 
         /*
         val adapter = ViewPagerAdapter(this.requireActivity())
@@ -47,6 +46,10 @@ class HomeFragment : Fragment(),HomePresenter.View {
 
 
         return binding.root
+    }
+
+    companion object{
+        lateinit var presenter : HomePresenter
     }
 
 

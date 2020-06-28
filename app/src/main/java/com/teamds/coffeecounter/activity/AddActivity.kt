@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.teamds.coffeecounter.presenter.HomePresenter
 import com.teamds.coffeecounter.databinding.ActivityAddBinding
+import com.teamds.coffeecounter.fragment.main.HomeFragment
 
 
 class AddActivity : AppCompatActivity() {
@@ -15,6 +16,7 @@ class AddActivity : AppCompatActivity() {
         
         val binding = ActivityAddBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         
         //타이틀바 //
         binding.mainActionbar.actionbarText.text = "커피 기록"
@@ -55,7 +57,7 @@ class AddActivity : AppCompatActivity() {
         binding.rg2.setOnCheckedChangeListener(listener2)
 
         binding.fabAdd.setOnClickListener {
-
+            HomeFragment.presenter.test()
             finish()
         }
 
