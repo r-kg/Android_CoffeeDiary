@@ -7,13 +7,19 @@ import android.view.*
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import androidx.room.Room
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.teamds.coffeecounter.fragment.main.HomeFragment
 import com.teamds.coffeecounter.R
+import com.teamds.coffeecounter.database.CoffeeDatabase
 import com.teamds.coffeecounter.fragment.main.StatFragment
 import com.teamds.coffeecounter.databinding.ActivityMainBinding
+import org.koin.android.ext.koin.androidApplication
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
+import org.koin.dsl.module
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         //기본 Action Bar 설정
         setSupportActionBar(binding.mainActionbar.root as Toolbar);
@@ -42,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         //binding.mainViewpager.setPageTransformer(transformation)
         binding.mainViewpager.adapter = adapter
         binding.mainViewpager.isUserInputEnabled = false    //Disable Swiping
+
         
         //ViewPager와 TabLayout 연결
         TabLayoutMediator(binding.mainTab, binding.mainViewpager){tab, position ->
@@ -83,6 +91,8 @@ class MainActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+
 
     //ViewPager2 Adapter Inner Class
     private inner class ViewPagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa){

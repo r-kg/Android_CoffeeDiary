@@ -6,6 +6,6 @@ import androidx.room.TypeConverters
 
 @Database(entities = arrayOf(CoffeeData::class), version = 1)
 @TypeConverters(Converters::class)
-    abstract class AppDatabase : RoomDatabase() {
+    abstract class CoffeeDatabase : RoomDatabase() {
         abstract fun coffeeDao(): CoffeeDao
     }

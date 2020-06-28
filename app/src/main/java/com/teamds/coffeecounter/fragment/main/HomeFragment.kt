@@ -10,14 +10,12 @@ import androidx.fragment.app.FragmentManager
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.teamds.coffeecounter.databinding.FragmentHomeBinding
-import com.teamds.coffeecounter.fragment.home.HomeFragment1
-import com.teamds.coffeecounter.fragment.home.HomeFragment2
-import com.teamds.coffeecounter.fragment.home.HomeFragment3
+import com.teamds.coffeecounter.presenter.HomePresenter
 
 /**
  * A simple [Fragment] subclass.
  */
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(),HomePresenter.View {
 
     lateinit var binding : FragmentHomeBinding
 
@@ -26,7 +24,10 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        val presenter = HomePresenter(this)
+
         binding = FragmentHomeBinding.inflate(layoutInflater)
+
         /*
         val adapter = ViewPagerAdapter(this.requireActivity())
         binding.homeViewpager.adapter = adapter
@@ -49,17 +50,8 @@ class HomeFragment : Fragment() {
     }
 
 
-
-    private inner class ViewPagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa){
-        override fun createFragment(position: Int): Fragment {
-            return when(position){
-                0 -> HomeFragment1()
-                1 -> HomeFragment2()
-                2 -> HomeFragment3()
-                else -> HomeFragment1()
-            }
-        }
-        override fun getItemCount(): Int = 3
+    override fun updateInfo(count: String, caffeine: String) {
+        binding.textTodayCup.text = count
+        binding.textTodayCaf.text = caffeine
     }
-
 }

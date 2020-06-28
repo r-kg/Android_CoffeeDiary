@@ -45,6 +45,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
                 android:orientation="horizontal"
+
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -52,6 +53,7 @@
 
 
                 <RadioGroup
+                    android:id="@+id/rg_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
@@ -71,9 +73,15 @@
                         android:layout_height="wrap_content"
                         android:text="카페인음료" />
 
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="디카페인" />
+
                 </RadioGroup>
 
                 <RadioGroup
+                    android:id="@+id/rg_2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
@@ -178,6 +186,7 @@
         app:layout_constraintTop_toBottomOf="@id/card_shot" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fab_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -187,6 +196,7 @@
         app:iconTint="@android:color/white"
         android:gravity="center"
         android:textColor="@android:color/white"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appCompatTextView" />
