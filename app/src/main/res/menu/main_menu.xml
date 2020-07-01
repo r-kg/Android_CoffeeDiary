@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_home"
+            android:title="홈"
+            android:icon="@drawable/ic_home"/>
+
+        <item
+            android:id="@+id/nav_report"
+            android:title="보고서"
+            android:icon="@drawable/ic_timeline"/>
+
+
+    </group>
+
+        <item android:title="기타">
+
+            <menu>
+                <item
+                    android:id="@+id/nav_setting"
+                    android:title="설정"
+                    android:icon="@drawable/ic_settings"/>
+
+                <item
+                android:id="@+id/nav_share"
+                android:title="공유"
+                android:icon="@drawable/ic_share"/>
+
+                <item
+                    android:id="@+id/nav_feedback"
+                    android:title="피드백"
+                    android:icon="@drawable/ic_feedback"/>
+
+            </menu>
+        </item>
+
+</menu>

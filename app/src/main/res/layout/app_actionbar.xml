@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:background="@android:color/white"
-    android:elevation="4dp"
     android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
@@ -13,7 +12,7 @@
         android:id="@+id/actionbar_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="커피몇잔"
+        android:text=""
         android:layout_gravity="center"
         android:textColor="@android:color/black"
         android:textSize="20sp"/>
