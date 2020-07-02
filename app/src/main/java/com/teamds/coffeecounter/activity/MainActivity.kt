@@ -1,42 +1,41 @@
 package com.teamds.coffeecounter.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.os.Build
 import android.os.Bundle
-import android.view.*
+import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.multidex.MultiDex
-import androidx.room.Room
-import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.drawerlayout.widget.DrawerLayout.SimpleDrawerListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.navigation.NavigationView
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
-import com.teamds.coffeecounter.fragment.main.HomeFragment
 import com.teamds.coffeecounter.R
-import com.teamds.coffeecounter.database.CoffeeDatabase
-import com.teamds.coffeecounter.fragment.main.StatFragment
 import com.teamds.coffeecounter.databinding.ActivityMainBinding
-import org.koin.android.ext.koin.androidApplication
-import org.koin.android.ext.koin.androidContext
-import org.koin.core.context.startKoin
-import org.koin.dsl.module
+import com.teamds.coffeecounter.databinding.BottomSheetBinding
+import com.teamds.coffeecounter.fragment.HomeFragment
+import com.teamds.coffeecounter.fragment.ReportFragment
+import com.teamds.coffeecounter.presenter.MainPresenter
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, MainPresenter.View {
 
-    lateinit var drawerLayout: DrawerLayout
-    lateinit var navigationView : NavigationView
-    lateinit var toolbar : Toolbar
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navigationView : NavigationView
+    private lateinit var toolbar : Toolbar
+    private lateinit var contentView : ConstraintLayout
+    private lateinit var presenter: MainPresenter
+    lateinit var binding: ActivityMainBinding
+    val END_SCALE = 0.7f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         //--------------------Ads----------------------------//
@@ -49,6 +48,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawerLayout = binding.mainDrawer
         navigationView = binding.navView
         toolbar = binding.mainActionbar.root as Toolbar
+        contentView = binding.content
+        presenter = MainPresenter(this)
 
         /*--------------------Tool bar-------------------------*/
         setSupportActionBar(toolbar);
@@ -64,7 +65,57 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         navigationView.setNavigationItemSelectedListener(this)
-        navigationView.setCheckedItem(R.id.nav_home)
+
+        if(savedInstanceState == null) {
+            navigationView.setCheckedItem(R.id.nav_home)
+            supportFragmentManager.beginTransaction().replace(R.id.fragment_container,
+                HomeFragment()
+            ).commit()
+        }
+
+        //-----------------drawer----------------------------//
+        //Add any color or remove it to use the default one!
+        //To make it transparent use Color.Transparent in side setScrimColor();
+        //drawerLayout.setScrimColor(Color.TRANSPARENT);
+
+        //Add any color or remove it to use the default one!
+        //To make it transparent use Color.Transparent in side setScrimColor();
+        //drawerLayout.setScrimColor(resources.getColor(R.color.colorPrimary))
+        drawerLayout.addDrawerListener(object : SimpleDrawerListener() {
+            override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
+
+                // Scale the View based on current slide offset
+                val diffScaledOffset: Float = slideOffset * (1 - END_SCALE)
+                val offsetScale = 1 - diffScaledOffset
+                contentView.scaleX = offsetScale
+                contentView.scaleY = offsetScale
+
+                // Translate the View, accounting for the scaled width
+                val xOffset = drawerView.width * slideOffset
+                val xOffsetDiff: Float = contentView.width * diffScaledOffset / 2
+                val xTranslation = xOffset - xOffsetDiff
+                contentView.translationX = xTranslation
+            }
+        })
+
+        binding.fabAdd.setOnClickListener {
+            val bottomSheetDialog = BottomSheetDialog(this, R.style.BottomSheet)
+            val bottomSheetBinding = BottomSheetBinding.inflate(layoutInflater)
+            bottomSheetDialog.setContentView(bottomSheetBinding.root)
+            bottomSheetDialog.show()
+
+            bottomSheetBinding.rgCoffee.setOnCheckedChangeListener { group, checkedId ->
+                bottomSheetBinding.fabConfirm.let{
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        it.background.setTint(resources.getColor(R.color.colorAccent))
+                    }
+                    it.isClickable = true
+                    it.text = "DONE"
+                    it.extend()
+                }
+
+            }
+        }
 
     }
 
@@ -80,6 +131,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
         when(item.itemId){
+            R.id.nav_home -> {
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_container,
+                    HomeFragment()
+                ).commit()
+                binding.fabAdd.show()
+            }
+            R.id.nav_report -> {
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_container,
+                    ReportFragment()
+                ).commit()
+                binding.fabAdd.hide()
+            }
             R.id.nav_setting -> {
                 val intent = Intent(this,SettingActivity()::class.java)
                 startActivity(intent)
@@ -89,4 +152,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
+
+
+
 }

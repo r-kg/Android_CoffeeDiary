@@ -1,4 +1,4 @@
-package com.teamds.coffeecounter.fragment.main
+package com.teamds.coffeecounter.fragment
 
 import android.os.Bundle
 import android.util.DisplayMetrics

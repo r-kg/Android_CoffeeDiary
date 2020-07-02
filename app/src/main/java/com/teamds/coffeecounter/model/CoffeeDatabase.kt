@@ -1,4 +1,4 @@
-package com.teamds.coffeecounter.database
+package com.teamds.coffeecounter.model
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

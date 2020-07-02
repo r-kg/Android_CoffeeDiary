@@ -1,10 +1,8 @@
 package com.teamds.coffeecounter
 
 import android.app.Application
-import androidx.multidex.MultiDex
-import androidx.multidex.MultiDexApplication
 import androidx.room.Room
-import com.teamds.coffeecounter.database.CoffeeDatabase
+import com.teamds.coffeecounter.model.CoffeeDatabase
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin

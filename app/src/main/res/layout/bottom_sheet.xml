@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottomSheetContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bottom_sheet_background"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_gravity="bottom"
+    android:padding="10dp"
+    android:animateLayoutChanges="true">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="커피 기록"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <RadioGroup
+            android:id="@+id/rg_coffee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <RadioButton
+                android:id="@+id/radioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="RadioButton" />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="RadioButton" />
+
+            <RadioButton
+                android:id="@+id/radioButton3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="RadioButton" />
+
+            <RadioButton
+                android:id="@+id/radioButton4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="RadioButton" />
+
+            <RadioButton
+                android:id="@+id/radioButton5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="RadioButton" />
+
+            <RadioButton
+                android:id="@+id/radioButton6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="RadioButton" />
+        </RadioGroup>
+    </HorizontalScrollView>
+
+    <com.warkiz.widget.IndicatorStayLayout
+        android:id="@+id/indicatorStayLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_label">
+
+        <com.warkiz.widget.IndicatorSeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:isb_indicator_color="@color/colorAccent"
+            app:isb_max="3"
+            app:isb_min="1"
+            app:isb_progress="1"
+            app:isb_seek_smoothly="true"
+            app:isb_show_indicator="rounded_rectangle"
+            app:isb_show_tick_marks_type="oval"
+            app:isb_show_tick_texts="true"
+            app:isb_thumb_color="@color/colorAccent"
+            app:isb_thumb_size="20dp"
+            app:isb_tick_marks_color="@color/colorAccent"
+            app:isb_tick_texts_array="@array/seekbar_shot_tick"
+            app:isb_tick_texts_color="@color/colorAccent"
+            app:isb_tick_texts_size="15sp"
+            app:isb_ticks_count="3"
+            app:isb_track_progress_color="@color/colorAccent"
+            app:isb_track_progress_size="4dp"/>
+    </com.warkiz.widget.IndicatorStayLayout>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fab_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:icon="@drawable/ic_coffeebean"
+        android:layout_marginBottom="5dp"
+        android:fadingEdgeLength="2dp"
+        android:fadingEdge="horizontal"
+        android:text=""
+        android:textSize="17sp"
+        android:backgroundTint="@android:color/darker_gray"
+        android:background="@android:color/darker_gray"
+        android:clickable="false"/>
+
+</LinearLayout>
