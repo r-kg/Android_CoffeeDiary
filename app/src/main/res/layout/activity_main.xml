@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:id="@+id/nav_view"
-        app:headerLayout="@layout/header"
+        app:headerLayout="@layout/layout_drawer_header"
         app:menu="@menu/main_menu"
         android:layout_gravity="start"/>
 
@@ -24,7 +24,7 @@
 
         <include
             android:id="@+id/main_actionbar"
-            layout="@layout/app_actionbar" />
+            layout="@layout/layout_actionbar" />
 
         <FrameLayout
             android:id="@+id/fragment_container"
@@ -52,7 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
-            ads:adSize="BANNER"
+            ads:adSize="SMART_BANNER"
             ads:adUnitId="ca-app-pub-3940256099942544/6300978111"
             ads:layout_constraintBottom_toBottomOf="parent">
 

@@ -8,7 +8,7 @@
 
     <include
         android:id="@+id/setting_actionbar"
-        layout="@layout/app_actionbar" />
+        layout="@layout/layout_actionbar" />
 
     <FrameLayout
         android:id="@+id/content_preference"

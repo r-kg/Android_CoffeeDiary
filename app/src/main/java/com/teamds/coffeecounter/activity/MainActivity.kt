@@ -18,7 +18,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.navigation.NavigationView
 import com.teamds.coffeecounter.R
 import com.teamds.coffeecounter.databinding.ActivityMainBinding
-import com.teamds.coffeecounter.databinding.BottomSheetBinding
+import com.teamds.coffeecounter.databinding.LayoutMainBottomSheetBinding
 import com.teamds.coffeecounter.fragment.HomeFragment
 import com.teamds.coffeecounter.fragment.ReportFragment
 import com.teamds.coffeecounter.presenter.MainPresenter
@@ -38,18 +38,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //--------------------Ads----------------------------//
-        MobileAds.initialize(this)
-        val adRequest = AdRequest.Builder().build()
-        binding.adView.loadAd(adRequest)
-
-
         /*---------------------Hooks--------------------------*/
         drawerLayout = binding.mainDrawer
         navigationView = binding.navView
         toolbar = binding.mainActionbar.root as Toolbar
         contentView = binding.content
         presenter = MainPresenter(this)
+
+        //--------------------Ads----------------------------//
+        MobileAds.initialize(this)
+        val adRequest = AdRequest.Builder().build()
+        binding.adView.loadAd(adRequest)
+
 
         /*--------------------Tool bar-------------------------*/
         setSupportActionBar(toolbar);
@@ -60,11 +60,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         /*---------------Navigation Drawer Menu------------------*/
         navigationView.bringToFront()
-        val toggle : ActionBarDrawerToggle = ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close)
+        navigationView.setNavigationItemSelectedListener(this)
+
+        val toggle = ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close)
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
-
-        navigationView.setNavigationItemSelectedListener(this)
 
         if(savedInstanceState == null) {
             navigationView.setCheckedItem(R.id.nav_home)
@@ -100,7 +100,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         binding.fabAdd.setOnClickListener {
             val bottomSheetDialog = BottomSheetDialog(this, R.style.BottomSheet)
-            val bottomSheetBinding = BottomSheetBinding.inflate(layoutInflater)
+            val bottomSheetBinding = LayoutMainBottomSheetBinding.inflate(layoutInflater)
             bottomSheetDialog.setContentView(bottomSheetBinding.root)
             bottomSheetDialog.show()
 
@@ -152,7 +152,4 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
-
-
-
 }
