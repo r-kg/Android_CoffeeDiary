@@ -102,6 +102,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             val bottomSheetDialog = BottomSheetDialog(this, R.style.BottomSheet)
             val bottomSheetBinding = LayoutMainBottomSheetBinding.inflate(layoutInflater)
             bottomSheetDialog.setContentView(bottomSheetBinding.root)
+            bottomSheetBinding.seekbarSize.setIndicatorTextFormat("\${TICK_TEXT}")
             bottomSheetDialog.show()
 
             bottomSheetBinding.rgCoffee.setOnCheckedChangeListener { group, checkedId ->

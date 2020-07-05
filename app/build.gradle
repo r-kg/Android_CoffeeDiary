@@ -75,6 +75,7 @@ dependencies {
     //UI Opensource
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     implementation 'com.github.warkiz.widget:indicatorseekbar:2.1.2'
+    implementation 'com.shawnlin:number-picker:2.4.10'
 
     //Google Ad
     implementation 'com.google.android.gms:play-services-ads:19.2.0'

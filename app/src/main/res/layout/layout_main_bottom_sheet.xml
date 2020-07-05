@@ -14,8 +14,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="커피 기록"
-        android:textSize="20sp"
+        android:text="어떤 커피를 드셨나요?"
+        android:textSize="17sp"
         android:textStyle="bold"/>
 
 
@@ -36,79 +36,92 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="RadioButton" />
+                android:text="아메리카노" />
 
             <RadioButton
                 android:id="@+id/radioButton2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="RadioButton" />
+                android:text="라떼" />
 
             <RadioButton
                 android:id="@+id/radioButton3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="RadioButton" />
+                android:text="카푸치노" />
 
             <RadioButton
                 android:id="@+id/radioButton4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="RadioButton" />
+                android:text="콜드브루" />
 
             <RadioButton
                 android:id="@+id/radioButton5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="RadioButton" />
+                android:text="카페인 음료" />
 
             <RadioButton
                 android:id="@+id/radioButton6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="RadioButton" />
+                android:text="홍차/밀크티" />
         </RadioGroup>
     </HorizontalScrollView>
 
-    <com.warkiz.widget.IndicatorStayLayout
-        android:id="@+id/indicatorStayLayout"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="사이즈와 샷 추가 여부를 알려주세요"/>
+
+
+    <com.warkiz.widget.IndicatorSeekBar
+        android:id="@+id/seekbar_size"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.533"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_label">
+        android:layout_marginTop="8dp"
+        app:isb_indicator_color="@color/colorAccent"
+        app:isb_max="4"
+        app:isb_min="1"
+        app:isb_progress="1"
+        app:isb_seek_smoothly="true"
+        app:isb_show_indicator="rounded_rectangle"
+        app:isb_show_tick_marks_type="oval"
+        app:isb_show_tick_texts="true"
+        app:isb_thumb_color="@color/colorAccent"
+        app:isb_thumb_size="20dp"
+        app:isb_tick_marks_color="@color/colorAccent"
+        app:isb_tick_texts_array="@array/seekbar_size_tick"
+        app:isb_tick_texts_color="@color/colorAccent"
+        app:isb_tick_texts_size="15sp"
+        app:isb_ticks_count="4"
+        app:isb_track_progress_color="@color/colorAccent"
+        app:isb_track_progress_size="4dp"/>
 
-        <com.warkiz.widget.IndicatorSeekBar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:isb_indicator_color="@color/colorAccent"
-            app:isb_max="3"
-            app:isb_min="1"
-            app:isb_progress="1"
-            app:isb_seek_smoothly="true"
-            app:isb_show_indicator="rounded_rectangle"
-            app:isb_show_tick_marks_type="oval"
-            app:isb_show_tick_texts="true"
-            app:isb_thumb_color="@color/colorAccent"
-            app:isb_thumb_size="20dp"
-            app:isb_tick_marks_color="@color/colorAccent"
-            app:isb_tick_texts_array="@array/seekbar_shot_tick"
-            app:isb_tick_texts_color="@color/colorAccent"
-            app:isb_tick_texts_size="15sp"
-            app:isb_ticks_count="3"
-            app:isb_track_progress_color="@color/colorAccent"
-            app:isb_track_progress_size="4dp"/>
-    </com.warkiz.widget.IndicatorStayLayout>
+    <com.shawnlin.numberpicker.NumberPicker
+        android:id="@+id/number_picker"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        app:np_dividerColor="@color/colorPrimary"
+        app:np_height="60dp"
+        app:np_max="5"
+        app:np_min="1"
+        app:np_orientation="horizontal"
+        app:np_selectedTextColor="@color/colorPrimary"
+        app:np_selectedTextSize="20sp"
+        app:np_textColor="@color/colorPrimary"
+        app:np_textSize="15sp"
+        app:np_value="3"
+        app:np_width="180dp" />
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/fab_confirm"
@@ -122,6 +135,6 @@
         android:textSize="17sp"
         android:backgroundTint="@android:color/darker_gray"
         android:background="@android:color/darker_gray"
-        android:clickable="false"/>
+        android:clickable="false" />
 
 </LinearLayout>
