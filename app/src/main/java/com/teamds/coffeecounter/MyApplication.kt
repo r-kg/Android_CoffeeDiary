@@ -14,10 +14,7 @@ class MyApplication : Application() {
 
         val dbModule = module {
             single {
-                Room.databaseBuilder(androidApplication(), CoffeeDatabase::class.java, "coffee-db").build()
-            }
-            single {
-                get<CoffeeDatabase>().coffeeDao()
+                val db =Room.databaseBuilder(androidApplication(), CoffeeDatabase::class.java, "coffee-db").build()
             }
         }
 

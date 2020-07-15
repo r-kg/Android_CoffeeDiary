@@ -79,4 +79,7 @@ dependencies {
 
     //Google Ad
     implementation 'com.google.android.gms:play-services-ads:19.2.0'
+
+    //test
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
 }

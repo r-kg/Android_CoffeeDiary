@@ -21,7 +21,11 @@ import com.teamds.coffeecounter.databinding.ActivityMainBinding
 import com.teamds.coffeecounter.databinding.LayoutMainBottomSheetBinding
 import com.teamds.coffeecounter.fragment.HomeFragment
 import com.teamds.coffeecounter.fragment.ReportFragment
+import com.teamds.coffeecounter.model.CoffeeData
+import com.teamds.coffeecounter.model.CoffeeDatabase
 import com.teamds.coffeecounter.presenter.MainPresenter
+import org.koin.android.ext.android.inject
+import java.util.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, MainPresenter.View {
 
@@ -102,7 +106,22 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             val bottomSheetDialog = BottomSheetDialog(this, R.style.BottomSheet)
             val bottomSheetBinding = LayoutMainBottomSheetBinding.inflate(layoutInflater)
             bottomSheetDialog.setContentView(bottomSheetBinding.root)
-            bottomSheetBinding.seekbarSize.setIndicatorTextFormat("\${TICK_TEXT}")
+
+            bottomSheetBinding.npSize.run{
+                wrapSelectorWheel = false
+                minValue=0
+                maxValue=4
+                displayedValues = arrayOf("캔/숏","톨/S","그란데/M","벤티/L","리터/1L+")
+                value = 1
+            }
+
+            bottomSheetBinding.npShot.run{
+                wrapSelectorWheel = false
+                minValue=0
+                maxValue=5
+                displayedValues = arrayOf("추가 안함","+1","+2","+3","+4","+5 이상")
+                value = 0
+            }
             bottomSheetDialog.show()
 
             bottomSheetBinding.rgCoffee.setOnCheckedChangeListener { group, checkedId ->
@@ -110,11 +129,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         it.background.setTint(resources.getColor(R.color.colorAccent))
                     }
-                    it.isClickable = true
+                    it.isEnabled = true
                     it.text = "DONE"
                     it.extend()
                 }
 
+            }
+
+            bottomSheetBinding.fabConfirm.setOnClickListener {
+                var currentDate = Calendar.getInstance().time
+                presenter.InsertCoffeeData(this,bottomSheetBinding.rgCoffee.checkedRadioButtonId,bottomSheetBinding.npSize.value,bottomSheetBinding.npShot.value)
+                bottomSheetDialog.hide()
             }
         }
 
