@@ -4,12 +4,12 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverter
-import java.util.*
+import java.time.LocalDateTime
 
 @Entity
 data class CoffeeData (
     @PrimaryKey(autoGenerate = true) var id: Int,
-    @ColumnInfo(name = "Date") var date: Date,
+    @ColumnInfo(name = "Date") var date: LocalDateTime,
     @ColumnInfo(name = "Type") var coffee : Int,
     @ColumnInfo(name = "Size") var size : Int,
     @ColumnInfo(name = "Shot") var shot : Int,
@@ -19,12 +19,12 @@ data class CoffeeData (
 
 class Converters {
     @TypeConverter
-    fun fromTimestamp(value: Long?): Date? {
-        return value?.let { Date(it) }
+    fun fromTimestamp(value: String?): LocalDateTime? {
+        return value?.let {  LocalDateTime.parse(value) }
     }
 
     @TypeConverter
-    fun dateToTimestamp(date: Date?): Long? {
-        return date?.time?.toLong()
+    fun dateToTimestamp(date: LocalDateTime?): String? {
+        return date.toString()
     }
 }

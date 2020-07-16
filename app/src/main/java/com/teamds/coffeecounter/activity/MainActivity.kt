@@ -21,10 +21,7 @@ import com.teamds.coffeecounter.databinding.ActivityMainBinding
 import com.teamds.coffeecounter.databinding.LayoutMainBottomSheetBinding
 import com.teamds.coffeecounter.fragment.HomeFragment
 import com.teamds.coffeecounter.fragment.ReportFragment
-import com.teamds.coffeecounter.model.CoffeeData
-import com.teamds.coffeecounter.model.CoffeeDatabase
 import com.teamds.coffeecounter.presenter.MainPresenter
-import org.koin.android.ext.android.inject
 import java.util.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, MainPresenter.View {
