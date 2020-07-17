@@ -41,7 +41,7 @@ class ReportCaffeineFragment : Fragment(), ReportPresenter.View {
         val labels = presenter.getChartLabel(entries.size-1)
 
         val dataSet = LineDataSet(entries,"mg")
-        dataSet.color = ContextCompat.getColor(requireContext(),R.color.colorAccent)
+        dataSet.color = ContextCompat.getColor(requireContext(),R.color.coffeeBrown)
         dataSet.lineWidth=2f
         dataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
 
