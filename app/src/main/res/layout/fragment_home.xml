@@ -122,13 +122,19 @@
                 android:textStyle="bold"
                 android:gravity="center"/>
 
-
-
-
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-
-
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_add"
+        app:tint="@android:color/white"
+        app:borderWidth="0dp"
+        android:backgroundTint="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_margin="20dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

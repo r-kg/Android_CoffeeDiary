@@ -33,17 +33,6 @@
             app:layout_constraintTop_toBottomOf="@id/main_actionbar"
             app:layout_constraintBottom_toTopOf="@id/adView" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_add"
-            app:tint="@android:color/white"
-            app:borderWidth="0dp"
-            android:backgroundTint="@color/colorAccent"
-            app:layout_constraintBottom_toTopOf="@id/adView"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_margin="20dp"/>
 
         <com.google.android.gms.ads.AdView
             xmlns:ads="http://schemas.android.com/apk/res-auto"

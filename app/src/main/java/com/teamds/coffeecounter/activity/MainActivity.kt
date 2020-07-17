@@ -1,7 +1,6 @@
 package com.teamds.coffeecounter.activity
 
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -14,23 +13,18 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.drawerlayout.widget.DrawerLayout.SimpleDrawerListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
-import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.navigation.NavigationView
 import com.teamds.coffeecounter.R
 import com.teamds.coffeecounter.databinding.ActivityMainBinding
-import com.teamds.coffeecounter.databinding.LayoutMainBottomSheetBinding
 import com.teamds.coffeecounter.fragment.HomeFragment
 import com.teamds.coffeecounter.fragment.ReportFragment
-import com.teamds.coffeecounter.presenter.MainPresenter
-import java.util.*
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, MainPresenter.View {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
 
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navigationView : NavigationView
     private lateinit var toolbar : Toolbar
     private lateinit var contentView : ConstraintLayout
-    private lateinit var presenter: MainPresenter
     lateinit var binding: ActivityMainBinding
     val END_SCALE = 0.7f
 
@@ -44,7 +38,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         navigationView = binding.navView
         toolbar = binding.mainActionbar.root as Toolbar
         contentView = binding.content
-        presenter = MainPresenter(this)
 
         //--------------------Ads----------------------------//
         MobileAds.initialize(this)
@@ -98,48 +91,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 contentView.translationX = xTranslation
             }
         })
-
-        binding.fabAdd.setOnClickListener {
-            val bottomSheetDialog = BottomSheetDialog(this, R.style.BottomSheet)
-            val bottomSheetBinding = LayoutMainBottomSheetBinding.inflate(layoutInflater)
-            bottomSheetDialog.setContentView(bottomSheetBinding.root)
-
-            bottomSheetBinding.npSize.run{
-                wrapSelectorWheel = false
-                minValue=0
-                maxValue=4
-                displayedValues = arrayOf("캔/숏","톨/S","그란데/M","벤티/L","리터/1L+")
-                value = 1
-            }
-
-            bottomSheetBinding.npShot.run{
-                wrapSelectorWheel = false
-                minValue=0
-                maxValue=5
-                displayedValues = arrayOf("추가 안함","+1","+2","+3","+4","+5 이상")
-                value = 0
-            }
-            bottomSheetDialog.show()
-
-            bottomSheetBinding.rgCoffee.setOnCheckedChangeListener { group, checkedId ->
-                bottomSheetBinding.fabConfirm.let{
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        it.background.setTint(resources.getColor(R.color.colorAccent))
-                    }
-                    it.isEnabled = true
-                    it.text = "DONE"
-                    it.extend()
-                }
-
-            }
-
-            bottomSheetBinding.fabConfirm.setOnClickListener {
-                var currentDate = Calendar.getInstance().time
-                presenter.InsertCoffeeData(this,bottomSheetBinding.rgCoffee.checkedRadioButtonId,bottomSheetBinding.npSize.value,bottomSheetBinding.npShot.value)
-                bottomSheetDialog.hide()
-            }
-        }
-
     }
 
     override fun onBackPressed() {
@@ -158,13 +109,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 supportFragmentManager.beginTransaction().replace(R.id.fragment_container,
                     HomeFragment()
                 ).commit()
-                binding.fabAdd.show()
             }
             R.id.nav_report -> {
                 supportFragmentManager.beginTransaction().replace(R.id.fragment_container,
                     ReportFragment()
                 ).commit()
-                binding.fabAdd.hide()
             }
             R.id.nav_setting -> {
                 val intent = Intent(this,SettingActivity()::class.java)

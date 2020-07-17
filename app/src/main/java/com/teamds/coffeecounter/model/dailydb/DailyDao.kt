@@ -17,4 +17,7 @@ interface DailyDao {
     @Query("SELECT * FROM DailyData WHERE date = :currentDate")
     fun getTodayData(currentDate : LocalDate): DailyData
 
+    @Query("SELECT COUNT(Id) FROM DailyData")
+    fun getCount(): Int
+
 }
