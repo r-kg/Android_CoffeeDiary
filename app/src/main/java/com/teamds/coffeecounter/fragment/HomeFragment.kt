@@ -1,7 +1,6 @@
 package com.teamds.coffeecounter.fragment
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +12,6 @@ import com.teamds.coffeecounter.databinding.FragmentHomeBinding
 import com.teamds.coffeecounter.databinding.LayoutMainBottomSheetBinding
 import com.teamds.coffeecounter.presenter.HomePresenter
 import java.time.LocalDate
-import java.util.*
 
 
 class HomeFragment : Fragment(), HomePresenter.View {
@@ -75,7 +73,7 @@ class HomeFragment : Fragment(), HomePresenter.View {
             }
 
             bottomSheetBinding.fabConfirm.setOnClickListener {
-                presenter.InsertCoffeeData(this.requireContext(),bottomSheetBinding.rgCoffee.checkedRadioButtonId,bottomSheetBinding.npSize.value,bottomSheetBinding.npShot.value)
+                presenter.insertCoffeeData(this.requireContext(),bottomSheetBinding.rgCoffee.checkedRadioButtonId,bottomSheetBinding.npSize.value,bottomSheetBinding.npShot.value)
                 bottomSheetDialog.hide()
             }
         }

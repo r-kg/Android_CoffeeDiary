@@ -20,4 +20,10 @@ interface DailyDao {
     @Query("SELECT COUNT(Id) FROM DailyData")
     fun getCount(): Int
 
+    @Query("SELECT AVG(Coffee) FROM DailyData")
+    fun getAvgCoffee() : Float
+
+    @Query("SELECT AVG(Caffeine) FROM DailyData")
+    fun getAvgCaffeine() : Float
+
 }

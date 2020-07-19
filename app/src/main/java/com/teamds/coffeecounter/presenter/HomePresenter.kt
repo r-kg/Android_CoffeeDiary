@@ -11,16 +11,16 @@ import java.time.LocalDateTime
 
 class HomePresenter(v: View){
     private val view : View = v
-    private val currentData: LocalDate = LocalDate.now()
+    private val localDateNow: LocalDate = LocalDate.now()
 
     fun updateCountText(context: Context){
 
-        val todayData : DailyData? = DailyDatabase.getInstance(context)?.dailyDao()?.getTodayData(currentData)
+        val todayData : DailyData? = DailyDatabase.getInstance(context)?.dailyDao()?.getTodayData(localDateNow)
 
         if(todayData == null){
             val index = DailyDatabase.getInstance(context)?.dailyDao()?.getCount()!!
 
-            DailyDatabase.getInstance(context)?.dailyDao()?.insert(DailyData(currentData,index,0,0))
+            DailyDatabase.getInstance(context)?.dailyDao()?.insert(DailyData(localDateNow,index,0,0))
             view.setCountText(0,0)
         }
         else{
@@ -28,10 +28,10 @@ class HomePresenter(v: View){
         }
     }
 
-    fun InsertCoffeeData(context: Context, coffee : Int, size : Int, shot : Int){
+    fun insertCoffeeData(context: Context, coffee : Int, size : Int, shot : Int){
 
-        val currentDate = LocalDateTime.now()
-        val todayData : DailyData = DailyDatabase.getInstance(context)?.dailyDao()?.getTodayData(currentData)!!
+        val localDateTimeNow = LocalDateTime.now()
+        val dailyDataToday : DailyData = DailyDatabase.getInstance(context)?.dailyDao()?.getTodayData(localDateNow)!!
 
         var caffeine : Int = when(size){
             0 -> 75
@@ -46,7 +46,7 @@ class HomePresenter(v: View){
         CoffeeDatabase.getInstance(context)?.coffeeDao()?.insert(
             CoffeeData(
                 0,
-                currentDate,
+                localDateTimeNow,
                 coffee,
                 size,
                 shot,
@@ -54,8 +54,8 @@ class HomePresenter(v: View){
             )
         )
 
-        DailyDatabase.getInstance(context)?.dailyDao()?.insert(DailyData(currentData, todayData.index, todayData.coffee+1, todayData.caffeine+caffeine))
-        view.setCountText(todayData.coffee+1, todayData.caffeine+caffeine)
+        DailyDatabase.getInstance(context)?.dailyDao()?.insert(DailyData(localDateNow, dailyDataToday.index, dailyDataToday.coffee+1, dailyDataToday.caffeine+caffeine))
+        view.setCountText(dailyDataToday.coffee+1, dailyDataToday.caffeine+caffeine)
     }
 
     interface View{

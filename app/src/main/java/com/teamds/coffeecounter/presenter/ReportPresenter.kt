@@ -1,13 +1,14 @@
 package com.teamds.coffeecounter.presenter
 
 import android.content.Context
-import android.util.Log
 import com.github.mikephil.charting.data.Entry
 import com.teamds.coffeecounter.model.dailydb.DailyDatabase
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 class ReportPresenter(v : View) {
+
+    private val view : View = v
 
 
     fun getChartEntry(context: Context, type: String) : List<Entry>{
@@ -56,8 +57,26 @@ class ReportPresenter(v : View) {
         return labels
     }
 
+    fun updateAvgText(context: Context, type: String){
+
+        val avg = when(type){
+            "Coffee"->DailyDatabase.getInstance(context)?.dailyDao()?.getAvgCoffee()
+            "Caffeine"->DailyDatabase.getInstance(context)?.dailyDao()?.getAvgCaffeine()
+            else -> 0f
+        }
+
+        view.updateAVG(avg!!)
+    }
+
 
     interface View{
 
+        fun updateAVG(avg : Float)
+
+        interface Cup : View {
+        }
+
+        interface Caffeine : View {
+        }
     }
 }

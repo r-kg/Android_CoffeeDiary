@@ -7,5 +7,12 @@
     <color name="pastelBlue">#7f7aff</color>
     <color name="pastelViolet">#c44fc2</color>
     <color name="blue">#36bcff</color>
-    <color name="coffeeBrown">#9c7005</color>
+    <color name="coffeeBrown">#BF8629</color>
+
+    <color name="white_blue">#B4F1FD</color>
+    <color name="white_green">#B4FDBE</color>
+    <color name="white_yellow">#FDFCB4</color>
+    <color name="white_red">#FDB4B4</color>
+
+    <color name="text_color">#232323</color>
 </resources>

@@ -14,14 +14,13 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.teamds.coffeecounter.R
-import com.teamds.coffeecounter.databinding.FragmentReportCupBinding
+import com.teamds.coffeecounter.databinding.FragmentReportCoffeeBinding
 import com.teamds.coffeecounter.presenter.ReportPresenter
 
 
-class ReportCaffeineFragment : Fragment(), ReportPresenter.View {
+class ReportCaffeineFragment : Fragment(), ReportPresenter.View.Caffeine {
 
-    lateinit var binding : FragmentReportCupBinding
-    lateinit var lineChart : LineChart
+    lateinit var binding : FragmentReportCoffeeBinding
     private lateinit var presenter: ReportPresenter
 
     override fun onCreateView(
@@ -29,45 +28,64 @@ class ReportCaffeineFragment : Fragment(), ReportPresenter.View {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentReportCupBinding.inflate(layoutInflater)
+        binding = FragmentReportCoffeeBinding.inflate(layoutInflater)
         presenter = ReportPresenter(this)
 
-        //*--------------------hook----------------------*/
-        lineChart = binding.linechartCup
+        /*-------------------Stat-------------------*/
+        presenter.updateAvgText(this.requireContext(),"Caffeine")
 
         //*------------------chart------------------*/
         val entries =  presenter.getChartEntry(this.requireContext(),"caffeine")
-        val recommendEntry = mutableListOf<Entry>(Entry(0f,555f),Entry(6f,555f))
         val labels = presenter.getChartLabel(entries.size-1)
 
+        drawChart(entries, labels)
+
+
+        return binding.root
+    }
+
+    override fun updateAVG(avg: Float) {
+        val text = avg.toInt()
+
+        binding.textAvg.text = "$text"
+    }
+
+    private fun drawChart(entries: List<Entry>, labels : List<String>){
+        val recommendEntry = mutableListOf<Entry>(Entry(0f,555f),Entry(6f,555f))
+
         val dataSet = LineDataSet(entries,"mg")
-        dataSet.color = ContextCompat.getColor(requireContext(),R.color.coffeeBrown)
-        dataSet.lineWidth=2f
-        dataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
+        dataSet.apply {
+            color = ContextCompat.getColor(requireContext(),R.color.coffeeBrown)
+            mode = LineDataSet.Mode.CUBIC_BEZIER
+            lineWidth=2f
+        }
 
         val recommendDataSet = LineDataSet(recommendEntry,"일일 권장량")
-        recommendDataSet.color = ContextCompat.getColor(requireContext(),R.color.blue)
-        recommendDataSet.lineWidth=2f
-
+        recommendDataSet.run {
+            color = ContextCompat.getColor(requireContext(),R.color.blue)
+            lineWidth=1.5f
+            setDrawValues(false)
+        }
 
         val lineData = LineData(dataSet, recommendDataSet)
-        lineData.setValueTextSize(11.5f)
-        lineData.setValueFormatter(object : ValueFormatter(){
-            override fun getFormattedValue(value: Float): String {
-                return value.toInt().toString()
-            }
-        })
+        lineData.run {
+            setValueTextSize(11.5f)
+            setValueFormatter(object : ValueFormatter(){
+                override fun getFormattedValue(value: Float): String {
+                    return value.toInt().toString()
+                }
+            })
+        }
 
-        lineChart.data = lineData
-        lineChart.run{
+        binding.linechart.run{
+            data = lineData
             animateXY(0,350)
             setScaleEnabled(false)
             setPinchZoom(false)
             description=null
             legend.verticalAlignment = Legend.LegendVerticalAlignment.TOP       //Legend는 차트 데이터의 범례를 의미합니다.
             legend.horizontalAlignment = Legend.LegendHorizontalAlignment.LEFT
-            //axisLeft.axisMinimum = 0f
-            //axisRight.axisMinimum = 0f
+
             axisRight.setDrawLabels(false)
             xAxis.setDrawGridLines(false)
             xAxis.position = XAxis.XAxisPosition.BOTTOM
@@ -78,12 +96,7 @@ class ReportCaffeineFragment : Fragment(), ReportPresenter.View {
                 }
             }
 
-
+            invalidate()
         }
-
-        lineChart.invalidate()
-
-        return binding.root
     }
-
 }
