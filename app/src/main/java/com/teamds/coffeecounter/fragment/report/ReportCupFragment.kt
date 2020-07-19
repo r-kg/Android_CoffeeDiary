@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
@@ -33,6 +32,7 @@ class ReportCupFragment : Fragment(), ReportPresenter.View.Cup {
 
         /*-------------------Stat-------------------*/
         presenter.updateAvgText(this.requireContext(),"Coffee")
+        presenter.updateMaxAvgDayText(this.requireContext())
 
         //*------------------chart------------------*/
         val entries =  presenter.getChartEntry(this.requireContext(),"coffee")
@@ -86,6 +86,15 @@ class ReportCupFragment : Fragment(), ReportPresenter.View.Cup {
 
     override fun updateAVG(avg: Float) {
         binding.textAvg.text = "$avg"
+
+        if(avg >= 2.0) binding.cardAvg.background.setTint(ContextCompat.getColor(this.requireContext(),R.color.white_red))
+        else if(avg >=1.6) binding.cardAvg.background.setTint(ContextCompat.getColor(this.requireContext(),R.color.white_yellow))
+        else if(avg >= 1.2) binding.cardAvg.background.setTint(ContextCompat.getColor(this.requireContext(),R.color.white_green))
+    }
+
+    override fun updateMaxDay(day: String, avg: Float) {
+        binding.stat1Value.text = day
+        binding.stat1UnitDesc.text = "평균 $avg 잔"
     }
 
 }

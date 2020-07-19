@@ -34,9 +34,10 @@
                 android:id="@+id/card_avg"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
+
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:backgroundTint="@color/white_green"
+                android:backgroundTint="@color/white_blue"
                 app:cardElevation="3dp"
                 app:cardCornerRadius="16dp">
 
@@ -106,7 +107,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="커피 소비량 최고"
+                        android:text="커피 소비량 최다"
                         android:textColor="@color/text_color"
                         android:textSize="19sp"/>
 
@@ -114,7 +115,7 @@
                         android:id="@+id/stat1_value"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="월"
+                        android:text="-"
                         android:textColor="@color/text_color"
                         android:textSize="50sp"
                         android:textStyle="bold"/>
@@ -131,7 +132,7 @@
                         android:id="@+id/stat1_unit_desc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="평균 1.56잔"
+                        android:text="-"
                         android:textColor="@android:color/darker_gray"
                         android:textSize="14sp"/>
 

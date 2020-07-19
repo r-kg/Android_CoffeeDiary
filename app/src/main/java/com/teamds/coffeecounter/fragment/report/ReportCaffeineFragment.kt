@@ -1,6 +1,7 @@
 package com.teamds.coffeecounter.fragment.report
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -31,14 +32,31 @@ class ReportCaffeineFragment : Fragment(), ReportPresenter.View.Caffeine {
         binding = FragmentReportCoffeeBinding.inflate(layoutInflater)
         presenter = ReportPresenter(this)
 
-        /*-------------------Stat-------------------*/
+
+        /*-----------Init View-------------*/
+        binding.stat1Desc.text = "권장량 대비 평균"
+        binding.stat1Desc.textSize = 17f
+        binding.stat1Value.textSize=40f
+        binding.stat1UnitDesc.text = "권장량 : 555mg"
+
+
+        ///
         presenter.updateAvgText(this.requireContext(),"Caffeine")
+        binding.textAvgUnit.text="mg"
+        binding.textAvgUnitDesc.visibility=View.GONE
+
+
+
+
+
+
 
         //*------------------chart------------------*/
         val entries =  presenter.getChartEntry(this.requireContext(),"caffeine")
         val labels = presenter.getChartLabel(entries.size-1)
 
         drawChart(entries, labels)
+
 
 
         return binding.root
@@ -48,6 +66,17 @@ class ReportCaffeineFragment : Fragment(), ReportPresenter.View.Caffeine {
         val text = avg.toInt()
 
         binding.textAvg.text = "$text"
+
+    }
+
+    override fun updateAvgRecommend(value: Float, desc: String, recommend: Int, indicator : Int) {
+        val text = value.toInt()
+
+
+        binding.stat1Value.text = "$text"+ "mg"
+        binding.stat1Unit.text = desc
+        binding.stat1UnitDesc.text = "권장량 : $recommend"+"mg"
+        binding.cardStat1.background.setTint(ContextCompat.getColor(this.requireContext(),indicator))
     }
 
     private fun drawChart(entries: List<Entry>, labels : List<String>){

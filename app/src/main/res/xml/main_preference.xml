@@ -29,10 +29,6 @@
             android:title="데이터 초기화"
             android:key="btn_reset"/>
 
-        <Preference
-            android:title="문의하기"
-            android:key="btn_feedback"/>
-
 
    </PreferenceCategory>
 </PreferenceScreen>
