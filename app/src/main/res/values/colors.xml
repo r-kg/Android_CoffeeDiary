@@ -15,4 +15,5 @@
     <color name="white_red">#FDB4B4</color>
 
     <color name="text_color">#232323</color>
+    <color name="text_gray">#3D3D3D</color>
 </resources>

@@ -48,7 +48,7 @@ class ReportCupFragment : Fragment(), ReportPresenter.View.Cup {
         val dataSet = LineDataSet(entries,"잔 수")
         dataSet.apply {
             color = ContextCompat.getColor(requireContext(),R.color.colorAccent)
-            mode = LineDataSet.Mode.CUBIC_BEZIER
+            mode = LineDataSet.Mode.HORIZONTAL_BEZIER
             lineWidth=2f
         }
 
@@ -85,7 +85,8 @@ class ReportCupFragment : Fragment(), ReportPresenter.View.Cup {
     }
 
     override fun updateAVG(avg: Float) {
-        binding.textAvg.text = "$avg"
+        val text = "%.2f".format(avg)
+        binding.textAvg.text = text
 
         if(avg >= 2.0) binding.cardAvg.background.setTint(ContextCompat.getColor(this.requireContext(),R.color.white_red))
         else if(avg >=1.6) binding.cardAvg.background.setTint(ContextCompat.getColor(this.requireContext(),R.color.white_yellow))
@@ -93,8 +94,11 @@ class ReportCupFragment : Fragment(), ReportPresenter.View.Cup {
     }
 
     override fun updateMaxDay(day: String, avg: Float) {
+
+        val text = "%.1f".format(avg)
+
         binding.stat1Value.text = day
-        binding.stat1UnitDesc.text = "평균 $avg 잔"
+        binding.stat1UnitDesc.text = "평균 $text 잔"
     }
 
 }

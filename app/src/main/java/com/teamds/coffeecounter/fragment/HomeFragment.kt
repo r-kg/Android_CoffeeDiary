@@ -12,6 +12,8 @@ import com.teamds.coffeecounter.databinding.FragmentHomeBinding
 import com.teamds.coffeecounter.databinding.LayoutMainBottomSheetBinding
 import com.teamds.coffeecounter.presenter.HomePresenter
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 
 class HomeFragment : Fragment(), HomePresenter.View {
@@ -33,10 +35,11 @@ class HomeFragment : Fragment(), HomePresenter.View {
         textCaf = binding.textCaffeineCount
 
         val date = LocalDate.now()
-        binding.textDate.text = "$date"
 
         /*----------------------------------------------------*/
         presenter.updateCountText(this.requireContext())
+
+        binding.textDate.text = date.format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 EE요일", Locale.KOREA))
 
 
         //*--------------------------fab---------------------*/

@@ -85,7 +85,7 @@ class ReportCaffeineFragment : Fragment(), ReportPresenter.View.Caffeine {
         val dataSet = LineDataSet(entries,"mg")
         dataSet.apply {
             color = ContextCompat.getColor(requireContext(),R.color.coffeeBrown)
-            mode = LineDataSet.Mode.CUBIC_BEZIER
+            mode = LineDataSet.Mode.HORIZONTAL_BEZIER
             lineWidth=2f
         }
 

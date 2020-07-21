@@ -52,6 +52,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:text="일일 평균"
+                        android:fontFamily="@font/font"
                         android:textColor="@color/text_color"
                         android:textSize="19sp"/>
 
@@ -62,7 +63,8 @@
                         android:text="0.0"
                         android:textSize="50sp"
                         android:textColor="@color/text_color"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold"
+                        android:fontFamily="@font/font"/>
 
                     <TextView
                         android:id="@+id/text_avg_unit"
@@ -70,15 +72,17 @@
                         android:layout_height="wrap_content"
                         android:text="잔"
                         android:textColor="@color/text_color"
-                        android:textSize="19sp"/>
+                        android:textSize="19sp"
+                        android:fontFamily="@font/font"/>
 
                     <TextView
                         android:id="@+id/text_avg_unit_desc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="한국인 일평균 1.56잔"
-                        android:textColor="@android:color/darker_gray"
-                        android:textSize="14sp"/>
+                        android:textColor="@color/text_gray"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/font"/>
 
 
 
@@ -109,7 +113,8 @@
                         android:layout_marginTop="8dp"
                         android:text="커피 소비량 최다"
                         android:textColor="@color/text_color"
-                        android:textSize="19sp"/>
+                        android:textSize="19sp"
+                        android:fontFamily="@font/font"/>
 
                     <TextView
                         android:id="@+id/stat1_value"
@@ -118,7 +123,8 @@
                         android:text="-"
                         android:textColor="@color/text_color"
                         android:textSize="50sp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold"
+                        android:fontFamily="@font/font"/>
 
                     <TextView
                         android:id="@+id/stat1_unit"
@@ -126,15 +132,17 @@
                         android:layout_height="wrap_content"
                         android:text="요일"
                         android:textColor="@color/text_color"
-                        android:textSize="19sp"/>
+                        android:textSize="19sp"
+                        android:fontFamily="@font/font"/>
 
                     <TextView
                         android:id="@+id/stat1_unit_desc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="-"
-                        android:textColor="@android:color/darker_gray"
-                        android:textSize="14sp"/>
+                        android:textColor="@color/text_gray"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/font"/>
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
