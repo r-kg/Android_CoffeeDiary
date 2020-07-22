@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintSet
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.teamds.coffeecounter.R
 import com.teamds.coffeecounter.databinding.FragmentHomeBinding
 import com.teamds.coffeecounter.databinding.LayoutMainBottomSheetBinding
 import com.teamds.coffeecounter.presenter.HomePresenter
+import org.koin.android.ext.android.bind
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -35,12 +37,17 @@ class HomeFragment : Fragment(), HomePresenter.View {
         textCaf = binding.textCaffeineCount
 
         val date = LocalDate.now()
+        val constraintSet = ConstraintSet()
+
+        constraintSet.clone(binding.root)
 
         /*----------------------------------------------------*/
         presenter.updateCountText(this.requireContext())
 
         binding.textDate.text = date.format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 EE요일", Locale.KOREA))
 
+        constraintSet.setVerticalBias(R.id.img_flow,0.0f)
+        constraintSet.applyTo(binding.root)
 
         //*--------------------------fab---------------------*/
         binding.fabAdd.setOnClickListener {
