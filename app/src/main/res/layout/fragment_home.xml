@@ -69,34 +69,34 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-    
-
 
     <TextView
         android:id="@+id/text_coffee_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/imcresoojin"
         android:gravity="center"
         android:text="5"
         android:textColor="@color/colorAccent"
         android:textSize="80sp"
         android:textStyle="bold"
-        android:fontFamily="@font/imcresoojin"
-        tools:layout_editor_absoluteX="71dp"
-        tools:layout_editor_absoluteY="276dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_date" />
 
     <TextView
         android:id="@+id/text_caffeine_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/imcresoojin"
         android:gravity="center"
         android:text="250"
         android:textColor="@color/colorAccent"
         android:textSize="50sp"
         android:textStyle="bold"
-        android:fontFamily="@font/imcresoojin"
-        tools:layout_editor_absoluteX="71dp"
-        tools:layout_editor_absoluteY="438dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_coffee_count" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_add"

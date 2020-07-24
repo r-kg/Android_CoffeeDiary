@@ -46,7 +46,7 @@ class HomeFragment : Fragment(), HomePresenter.View {
 
         binding.textDate.text = date.format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 EE요일", Locale.KOREA))
 
-        constraintSet.setVerticalBias(R.id.img_flow,0.0f)
+        constraintSet.setVerticalBias(R.id.img_flow,0.9f)
         constraintSet.applyTo(binding.root)
 
         //*--------------------------fab---------------------*/
