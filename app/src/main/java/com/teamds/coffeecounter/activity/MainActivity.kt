@@ -1,9 +1,12 @@
 package com.teamds.coffeecounter.activity
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -18,6 +21,7 @@ import com.teamds.coffeecounter.R
 import com.teamds.coffeecounter.databinding.ActivityMainBinding
 import com.teamds.coffeecounter.fragment.HomeFragment
 import com.teamds.coffeecounter.fragment.ReportFragment
+
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
 
@@ -118,6 +122,32 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_setting -> {
                 val intent = Intent(this,SettingActivity()::class.java)
                 startActivity(intent)
+            }
+
+            R.id.nav_share ->{
+
+            }
+            R.id.nav_feedback ->{
+                val TO = arrayOf("gundaegi2@gmail.com")
+                val CC = arrayOf("")
+                val emailIntent = Intent(Intent.ACTION_SEND)
+                emailIntent.data = Uri.parse("mailto:")
+                emailIntent.type = "text/plain"
+
+                emailIntent.putExtra(Intent.EXTRA_EMAIL, TO)
+                emailIntent.putExtra(Intent.EXTRA_CC, CC)
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "커피몇잔 Feedback Email")
+                emailIntent.putExtra(Intent.EXTRA_TEXT, "")
+
+                try {
+                    startActivity(Intent.createChooser(emailIntent, "보내는중..."))
+                    finish()
+                } catch (ex: ActivityNotFoundException) {
+                    Toast.makeText(
+                        this@MainActivity,
+                        "There is no email client installed.", Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
         }
 

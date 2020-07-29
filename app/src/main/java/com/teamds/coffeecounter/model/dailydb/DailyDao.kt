@@ -26,4 +26,7 @@ interface DailyDao {
     @Query("SELECT AVG(Caffeine) FROM DailyData")
     fun getAvgCaffeine() : Float
 
+    @Query("DELETE FROM DailyData")
+    fun reset()
+
 }

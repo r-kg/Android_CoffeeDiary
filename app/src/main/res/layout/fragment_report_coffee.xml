@@ -149,24 +149,5 @@
 
         </LinearLayout>
 
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_margin="8dp"
-            app:cardElevation="3dp"
-            app:cardCornerRadius="16dp">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-
     </LinearLayout>
 </ScrollView>

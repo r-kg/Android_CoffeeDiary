@@ -104,7 +104,7 @@ class HomeFragment : Fragment(), HomePresenter.View {
 
     /*-------------------Presenter Contract----------------------*/
     override fun setCountText(coffee: Int, caffeine: Int) {
-        var bias = 0.8 - (0.2 * coffee)
+        var bias = 1.0 - (0.25 * coffee)
 
         if(bias <= 0) {
             binding.textTitle.text = "커피그만"

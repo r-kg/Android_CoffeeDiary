@@ -15,4 +15,7 @@ interface CoffeeDao {
 
     @Delete
     fun delete(coffeeData: CoffeeData)
+
+    @Query("DELETE FROM CoffeeData")
+    fun reset()
 }
