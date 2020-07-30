@@ -11,6 +11,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.teamds.coffeecounter.databinding.FragmentReportBinding
+import com.teamds.coffeecounter.fragment.report.DayFragment
 import com.teamds.coffeecounter.fragment.report.ReportCaffeineFragment
 import com.teamds.coffeecounter.fragment.report.ReportCupFragment
 
@@ -34,7 +35,7 @@ class ReportFragment : Fragment() {
         val adapter = ViewPagerAdapter(this.requireActivity())
         viewPager2.adapter = adapter
 
-        val tabLayoutText = arrayOf("커피","카페인")
+        val tabLayoutText = arrayOf("날짜별","커피","카페인")
 
         TabLayoutMediator(tabLayout,viewPager2){ tab, position ->  
             tab.text = tabLayoutText[position]
@@ -47,12 +48,13 @@ class ReportFragment : Fragment() {
     private inner class ViewPagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa){
         override fun createFragment(position: Int): Fragment {
             return when(position){
-                0 -> ReportCupFragment()
-                1 -> ReportCaffeineFragment()
+                0 -> DayFragment()
+                1 -> ReportCupFragment()
+                2 -> ReportCaffeineFragment()
                 else -> ReportCupFragment()
             }
         }
-        override fun getItemCount(): Int = 2
+        override fun getItemCount(): Int = 3
     }
 
 }

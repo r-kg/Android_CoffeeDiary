@@ -108,7 +108,6 @@ class ReportCaffeineFragment : Fragment(), ReportPresenter.View.Caffeine {
 
         binding.linechart.run{
             data = lineData
-            animateXY(0,350)
             setScaleEnabled(false)
             setPinchZoom(false)
             description=null
