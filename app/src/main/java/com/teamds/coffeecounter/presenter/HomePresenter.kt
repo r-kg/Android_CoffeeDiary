@@ -33,11 +33,14 @@ class HomePresenter(v: View){
         val localDateTimeNow = LocalDateTime.now()
         val dailyDataToday : DailyData = DailyDatabase.getInstance(context)?.dailyDao()?.getTodayData(localDateNow)!!
 
+        /*
         var caffeine : Int = when(coffee){
 
         }
 
-        caffeine += when(size){
+         */
+
+        var caffeine = when(size){
             0 -> 75
             1 -> 150
             2 -> 225
