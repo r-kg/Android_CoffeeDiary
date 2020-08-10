@@ -37,7 +37,7 @@
             app:srcCompat="@drawable/beanorange" />
 
         <TextView
-            android:id="@+id/text_coffee_shot"
+            android:id="@+id/text_caffeine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/font"
@@ -84,7 +84,7 @@
             app:layout_constraintTop_toBottomOf="@+id/text_date"/>
 
         <TextView
-            android:id="@+id/text_shot"
+            android:id="@+id/text_coffee_shot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/font"

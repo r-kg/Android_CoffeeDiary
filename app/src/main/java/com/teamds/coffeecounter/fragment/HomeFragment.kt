@@ -119,8 +119,8 @@ class HomeFragment : Fragment(), HomePresenter.View {
         val transition  = AutoTransition()
         transition.duration = 500
         transition.interpolator = AccelerateDecelerateInterpolator()
-
         TransitionManager.beginDelayedTransition(binding.root, transition)
+
         constraintSet.applyTo(binding.root)
 
         textCoffee.text = "$coffee"

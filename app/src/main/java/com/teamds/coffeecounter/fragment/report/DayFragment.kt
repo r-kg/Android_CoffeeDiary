@@ -2,13 +2,18 @@ package com.teamds.coffeecounter.fragment.report
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.DatePicker
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.teamds.coffeecounter.CoffeeDataRecyclerAdapter
 import com.teamds.coffeecounter.R
 import com.teamds.coffeecounter.databinding.FragmentDayBinding
+import com.teamds.coffeecounter.model.coffeedb.CoffeeDatabase
 import org.koin.android.ext.android.bind
 import java.time.LocalDate
 
@@ -19,6 +24,9 @@ class DayFragment : Fragment() {
     var year : Int = LocalDate.now().year
     var month : Int = LocalDate.now().month.value
     var dayOfMonth : Int = LocalDate.now().dayOfMonth
+
+    var layoutManager : RecyclerView.LayoutManager? = null
+    var adapter : RecyclerView.Adapter<CoffeeDataRecyclerAdapter.ViewHolder>? = null
 
 
     override fun onCreateView(
@@ -36,7 +44,22 @@ class DayFragment : Fragment() {
         }
 
 
+
+
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        var date : String = LocalDate.of(this.year,this.month, this.dayOfMonth).toString()+"%"
+        var dateCoffeeList = CoffeeDatabase.getInstance(requireContext())?.coffeeDao()?.getCoffeeDataByDate(date)
+        var recyclerAdapter = CoffeeDataRecyclerAdapter(dateCoffeeList!!)
+
+        binding.recyclerCoffeeData.apply{
+            layoutManager = LinearLayoutManager(activity)
+            adapter = recyclerAdapter
+        }
     }
 
     fun showCalender(){
@@ -47,6 +70,14 @@ class DayFragment : Fragment() {
                 this.dayOfMonth = dayOfMonth
 
                 binding.textSelectedDate.text = "${this.year}년 ${this.month}월 ${this.dayOfMonth}일"
+
+                var date : String = LocalDate.of(this.year,this.month, this.dayOfMonth).toString()+"%"
+                var dateCoffeeList = CoffeeDatabase.getInstance(requireContext())?.coffeeDao()?.getCoffeeDataByDate(date)
+
+                var adapter = binding.recyclerCoffeeData.adapter as CoffeeDataRecyclerAdapter
+                adapter.setRecyclerList(dateCoffeeList!!)
+                adapter.notifyDataSetChanged()
+
 
             },year,month-1,dayOfMonth)
 

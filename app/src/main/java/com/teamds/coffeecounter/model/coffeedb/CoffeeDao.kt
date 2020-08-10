@@ -18,4 +18,7 @@ interface CoffeeDao {
 
     @Query("DELETE FROM CoffeeData")
     fun reset()
+
+    @Query("SELECT * FROM CoffeeData WHERE Date LIKE :currentDate")
+    fun getCoffeeDataByDate(currentDate : String) : List<CoffeeData>
 }
