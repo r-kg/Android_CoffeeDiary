@@ -32,29 +32,30 @@ class HomePresenter(v: View){
 
         val localDateTimeNow = LocalDateTime.now()
         val dailyDataToday : DailyData = DailyDatabase.getInstance(context)?.dailyDao()?.getTodayData(localDateNow)!!
+        val index = coffee - 2131362045
 
-        /*
-        var caffeine : Int = when(coffee){
-
-        }
-
-         */
-
-        var caffeine = when(size){
-            0 -> 75
-            1 -> 150
-            2 -> 225
-            3 -> 300
+        var caffeine : Int = when(index){
+            0 -> 150
+            1 -> 90
+            2 -> 75
+            3 -> 200
+            4 -> 0
+            5 -> 80
             else -> 150
         }
 
-        caffeine += 70 * shot
+        caffeine += when(size){
+            3,4 -> 75
+            else -> 0
+        }
+
+        caffeine += 75 * shot
 
         CoffeeDatabase.getInstance(context)?.coffeeDao()?.insert(
             CoffeeData(
                 0,
                 localDateTimeNow,
-                coffee,
+                index,
                 size,
                 shot,
                 caffeine

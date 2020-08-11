@@ -8,6 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.teamds.coffeecounter.databinding.RecyclerviewCoffeeDataItemBinding
 import com.teamds.coffeecounter.model.coffeedb.CoffeeData
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 
 class CoffeeDataRecyclerAdapter(var itemSet: List<CoffeeData>) : RecyclerView.Adapter<CoffeeDataRecyclerAdapter.ViewHolder>() {
@@ -30,11 +32,18 @@ class CoffeeDataRecyclerAdapter(var itemSet: List<CoffeeData>) : RecyclerView.Ad
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.textCoffee.text = "${recylcerList[position].coffee}"
-        holder.textDate.text = "${recylcerList[position].date}"
-        holder.textSize.text = "${recylcerList[position].size}"
-        holder.textShot.text = "${recylcerList[position].shot}"
-        holder.textCaffeine.text = "${recylcerList[position].caffeine}"
+
+        val coffeeText = arrayOf("아메리카노","라떼/카푸치노","에스프레소","콜드브루/드립","디카페인","카페인 음료류")
+        val sizeText = arrayOf("캔/Short","톨/Small","그란데/Medium","벤티/Large","리터/1L+")
+
+        holder.textCoffee.text = coffeeText[recylcerList[position].coffee]
+        holder.textDate.text = recylcerList[position].date.format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH시 mm분", Locale.KOREA))
+        holder.textSize.text = sizeText[recylcerList[position].size]
+        holder.textShot.text = when(recylcerList[position].shot){
+            0 -> ""
+            else -> "+${recylcerList[position].shot} 샷"
+        }
+        holder.textCaffeine.text = "${recylcerList[position].caffeine}mg"
     }
 
     override fun getItemCount(): Int {

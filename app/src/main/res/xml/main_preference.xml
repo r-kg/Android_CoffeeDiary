@@ -4,13 +4,6 @@
     <PreferenceCategory
         android:title="일반">
 
-        <SwitchPreferenceCompat
-            android:title="푸시 알림"
-            android:key="switch_push"
-            android:defaultValue="true"
-            android:summaryOn="푸시 알림을 수신합니다"
-            android:summaryOff="푸시 알림을 수신하지 않습니다"
-            />
 
         <ListPreference
             android:title="카페인 일일 권장량 기준"

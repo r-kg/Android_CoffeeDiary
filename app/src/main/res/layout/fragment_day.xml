@@ -7,6 +7,8 @@
     android:orientation="vertical"
     tools:context=".fragment.report.DayFragment">
 
+
+
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -52,11 +54,17 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_coffee_data"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical"/>
+        tools:listitem="@layout/recyclerview_coffee_data_item"
+        android:scrollbars="vertical">
+
+
+    </androidx.recyclerview.widget.RecyclerView>
+
 
 
 </LinearLayout>

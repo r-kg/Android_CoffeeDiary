@@ -13,20 +13,5 @@
         <item>2</item>
     </string-array>
 
-    <string-array name="seekbar_size_tick">
-        <item>캔(Short)</item>
-        <item>톨(S)</item>
-        <item>그란데(M)</item>
-        <item>벤티(L)</item>
-        <item>리터(1L)</item>
-
-    </string-array>
-
-    <string-array name="seekbar_shot_tick">
-        <item>1샷(기본)</item>
-        <item>2샷</item>
-        <item>3샷</item>
-        <item>4샷+</item>
-    </string-array>
 
 </resources>
