@@ -124,9 +124,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 startActivity(intent)
             }
 
+            /*
             R.id.nav_share ->{
 
             }
+
+             */
             R.id.nav_feedback ->{
                 val TO = arrayOf("gundaegi2@gmail.com")
                 val CC = arrayOf("")

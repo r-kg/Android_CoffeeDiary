@@ -54,13 +54,14 @@
                         android:text="일일 평균"
                         android:fontFamily="@font/font"
                         android:textColor="@color/text_color"
-                        android:textSize="19sp"/>
+                        android:textSize="18sp"/>
 
                     <TextView
                         android:id="@+id/text_avg"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0.0"
+                        android:layout_margin="4dp"
                         android:textSize="50sp"
                         android:textColor="@color/text_color"
                         android:textStyle="bold"
@@ -72,7 +73,7 @@
                         android:layout_height="wrap_content"
                         android:text="잔"
                         android:textColor="@color/text_color"
-                        android:textSize="19sp"
+                        android:textSize="18sp"
                         android:fontFamily="@font/font"/>
 
                     <TextView
@@ -80,8 +81,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="한국인 일평균 1.56잔"
+                        android:layout_margin="4dp"
                         android:textColor="@color/text_gray"
-                        android:textSize="14sp"
+                        android:textSize="13sp"
                         android:fontFamily="@font/font"/>
 
 
@@ -113,7 +115,7 @@
                         android:layout_marginTop="8dp"
                         android:text="커피 소비량 최다"
                         android:textColor="@color/text_color"
-                        android:textSize="19sp"
+                        android:textSize="18sp"
                         android:fontFamily="@font/font"/>
 
                     <TextView
@@ -121,6 +123,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="-"
+                        android:layout_margin="4dp"
                         android:textColor="@color/text_color"
                         android:textSize="50sp"
                         android:textStyle="bold"
@@ -132,7 +135,7 @@
                         android:layout_height="wrap_content"
                         android:text="요일"
                         android:textColor="@color/text_color"
-                        android:textSize="19sp"
+                        android:textSize="18sp"
                         android:fontFamily="@font/font"/>
 
                     <TextView
@@ -140,6 +143,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="-"
+                        android:layout_margin="4dp"
                         android:textColor="@color/text_gray"
                         android:textSize="14sp"
                         android:fontFamily="@font/font"/>

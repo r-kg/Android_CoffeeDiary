@@ -18,7 +18,6 @@ import com.teamds.coffeecounter.R
 import com.teamds.coffeecounter.databinding.FragmentHomeBinding
 import com.teamds.coffeecounter.databinding.LayoutMainBottomSheetBinding
 import com.teamds.coffeecounter.presenter.HomePresenter
-import org.koin.android.ext.android.bind
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -56,6 +55,7 @@ class HomeFragment : Fragment(), HomePresenter.View {
         binding.fabAdd.setOnClickListener {
             val bottomSheetDialog = BottomSheetDialog(this.requireContext(), R.style.BottomSheet)
             val bottomSheetBinding = LayoutMainBottomSheetBinding.inflate(layoutInflater)
+            var touchTrigger = true
             bottomSheetDialog.setContentView(bottomSheetBinding.root)
 
             bottomSheetBinding.npSize.run{
@@ -86,8 +86,16 @@ class HomeFragment : Fragment(), HomePresenter.View {
             }
 
             bottomSheetBinding.fabConfirm.setOnClickListener {
-                presenter.insertCoffeeData(this.requireContext(),bottomSheetBinding.rgCoffee.checkedRadioButtonId,bottomSheetBinding.npSize.value,bottomSheetBinding.npShot.value)
-                bottomSheetDialog.hide()
+                if(touchTrigger) {
+                    touchTrigger=false
+                    presenter.insertCoffeeData(
+                        this.requireContext(),
+                        bottomSheetBinding.rgCoffee.checkedRadioButtonId,
+                        bottomSheetBinding.npSize.value,
+                        bottomSheetBinding.npShot.value
+                    )
+                    bottomSheetDialog.hide()
+                }
             }
         }
 

@@ -23,10 +23,6 @@
                     android:title="설정"
                     android:icon="@drawable/ic_settings"/>
 
-                <item
-                android:id="@+id/nav_share"
-                android:title="공유"
-                android:icon="@drawable/ic_share"/>
 
                 <item
                     android:id="@+id/nav_feedback"

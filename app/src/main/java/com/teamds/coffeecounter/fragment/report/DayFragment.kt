@@ -14,7 +14,6 @@ import com.teamds.coffeecounter.CoffeeDataRecyclerAdapter
 import com.teamds.coffeecounter.R
 import com.teamds.coffeecounter.databinding.FragmentDayBinding
 import com.teamds.coffeecounter.model.coffeedb.CoffeeDatabase
-import org.koin.android.ext.android.bind
 import java.time.LocalDate
 
 

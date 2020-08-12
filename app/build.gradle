@@ -66,12 +66,6 @@ dependencies {
     kapt 'androidx.room:room-compiler:2.2.5'
     implementation 'androidx.room:room-runtime:2.2.5'
 
-    //Koin
-    implementation "org.koin:koin-androidx-scope:$koin_version"
-    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
-    implementation "org.koin:koin-androidx-fragment:$koin_version"
-    implementation "org.koin:koin-androidx-ext:$koin_version"
-
     //UI Opensource
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     implementation 'com.github.warkiz.widget:indicatorseekbar:2.1.2'
