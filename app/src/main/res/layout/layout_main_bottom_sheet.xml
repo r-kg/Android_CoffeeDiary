@@ -108,7 +108,7 @@
         android:id="@+id/fab_confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:icon="@drawable/ic_coffeebean"
+        app:icon="@drawable/beanorange"
         android:layout_marginBottom="5dp"
         android:fadingEdgeLength="2dp"
         android:fadingEdge="horizontal"
