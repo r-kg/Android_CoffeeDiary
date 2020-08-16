@@ -5,7 +5,6 @@ import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.transition.AutoTransition
 import android.transition.TransitionManager
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -46,7 +45,7 @@ class HomeFragment : Fragment(), HomePresenter.View {
         constraintSet.clone(binding.root)
 
         /*----------------------------------------------------*/
-        presenter.updateCountText(this.requireContext())
+        presenter.setCount(this.requireContext())
 
         binding.textDate.text = date.format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 EE요일", Locale.KOREA))
 

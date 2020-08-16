@@ -40,14 +40,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         /*---------------------Hooks--------------------------*/
         drawerLayout = binding.mainDrawer
         navigationView = binding.navView
-        toolbar = binding.mainActionbar.root as Toolbar
+        toolbar = binding.mainActionbar.root
         contentView = binding.content
 
-        //--------------------Ads----------------------------//
+        /*----------------Google Ads--------------------------*/
         MobileAds.initialize(this)
         val adRequest = AdRequest.Builder().build()
         binding.adView.loadAd(adRequest)
-
 
         /*--------------------Tool bar-------------------------*/
         setSupportActionBar(toolbar);
@@ -128,33 +127,35 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_share ->{
 
             }
-
              */
-            R.id.nav_feedback ->{
-                val TO = arrayOf("gundaegi2@gmail.com")
-                val CC = arrayOf("")
-                val emailIntent = Intent(Intent.ACTION_SEND)
-                emailIntent.data = Uri.parse("mailto:")
-                emailIntent.type = "text/plain"
 
-                emailIntent.putExtra(Intent.EXTRA_EMAIL, TO)
-                emailIntent.putExtra(Intent.EXTRA_CC, CC)
-                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "커피몇잔 Feedback Email")
-                emailIntent.putExtra(Intent.EXTRA_TEXT, "")
-
-                try {
-                    startActivity(Intent.createChooser(emailIntent, "보내는중..."))
-                    finish()
-                } catch (ex: ActivityNotFoundException) {
-                    Toast.makeText(
-                        this@MainActivity,
-                        "There is no email client installed.", Toast.LENGTH_SHORT
-                    ).show()
-                }
-            }
+            R.id.nav_feedback -> sendFeedback()
         }
 
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    fun sendFeedback(){
+        val TO = arrayOf("gundaegi2@gmail.com")
+        val CC = arrayOf("")
+        val emailIntent = Intent(Intent.ACTION_SEND)
+        emailIntent.data = Uri.parse("mailto:")
+        emailIntent.type = "text/plain"
+
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO)
+        emailIntent.putExtra(Intent.EXTRA_CC, CC)
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "커피몇잔 Feedback Email")
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "")
+
+        try {
+            startActivity(Intent.createChooser(emailIntent, "보내는중..."))
+            finish()
+        } catch (ex: ActivityNotFoundException) {
+            Toast.makeText(
+                this@MainActivity,
+                "There is no email client installed.", Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 }

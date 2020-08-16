@@ -32,7 +32,7 @@ class ReportCupFragment : Fragment(), ReportPresenter.View.Cup {
 
         /*-------------------Stat-------------------*/
         presenter.updateAvgText(this.requireContext(),"Coffee")
-        presenter.updateMaxAvgDayText(this.requireContext())
+        presenter.setMaxAverageDay(this.requireContext())
 
         //*------------------chart------------------*/
         val entries =  presenter.getChartEntry(this.requireContext(),"coffee")

@@ -1,65 +1,48 @@
 package com.teamds.coffeecounter.presenter
 
 import android.content.Context
-import android.util.Log
-import androidx.preference.Preference
 import androidx.preference.PreferenceManager
 import com.github.mikephil.charting.data.Entry
 import com.teamds.coffeecounter.R
 import com.teamds.coffeecounter.model.dailydb.DailyDatabase
-import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
-import java.util.*
 import kotlin.collections.HashMap
 import kotlin.math.absoluteValue
-import kotlin.time.seconds
 
 open class ReportPresenter(v : View) {
 
     private val view : View = v
 
-
     fun getChartEntry(context: Context, type: String) : List<Entry>{
         val entries = mutableListOf<Entry>()
-        var targetDate = LocalDate.now()
-        var entryNumber = 6
+        var date = LocalDate.now()
 
-        /*
-        var entryNumber = DailyDatabase.getInstance(context)?.dailyDao()?.getCount()!! - 1
-        if(entryNumber > 6) entryNumber = 6
-         */
+        for(i in 6 downTo 0){
+            val dailyData = DailyDatabase.getInstance(context)?.dailyDao()?.getTodayData(date)
+            val index = i.toFloat()
 
-        while(true){
-            val dailyData = DailyDatabase.getInstance(context)?.dailyDao()?.getTodayData(targetDate)
-
-            if(entryNumber < 0) break
-
-            if(dailyData == null){
-                entries.add(0,Entry(entryNumber.toFloat(),0f))
-            }
-            else
-            {
+            dailyData?.let {
                 when(type){
-                    "coffee" -> entries.add(0,Entry(entryNumber.toFloat(),dailyData.coffee.toFloat()))
-                    "caffeine" -> entries.add(0,Entry(entryNumber.toFloat(),dailyData.caffeine.toFloat()))
+                    "coffee" -> entries.add(0,Entry(index,dailyData.coffee.toFloat()))
+                    "caffeine" -> entries.add(0,Entry(index,dailyData.caffeine.toFloat()))
                 }
-            }
+            }?:{
+                entries.add(0,Entry(index.toFloat(),0f))
+            }()
 
-            entryNumber--
-            targetDate = targetDate.minusDays(1)
+            date = date.minusDays(1)
         }
 
         return entries
     }
 
     fun getChartLabel(count : Int) : List<String>{
-        val targetDate = LocalDate.now()
         val labels = mutableListOf<String>("그저께","어제","오늘")
-        val formatter = DateTimeFormatter.ofPattern("MM/dd")
+        val date = LocalDate.now()
 
         for(i in 3..count){
-            val label = targetDate.minusDays(i.toLong()).format(formatter)
+            val label = date.minusDays(i.toLong()).format(DateTimeFormatter.ofPattern("MM/dd"))
             labels.add(0,label)
         }
 
@@ -101,10 +84,11 @@ open class ReportPresenter(v : View) {
     }
 
 
-    fun updateMaxAvgDayText(context: Context){
+    fun setMaxAverageDay(context: Context){
         val dailyDataList = DailyDatabase.getInstance(context)?.dailyDao()?.getAll()!!
-        val dayAvg : HashMap<Int, Float> = HashMap()
+        val dayArray = arrayOf("월","화","수","목","금","토","일")
         val dayCount = arrayOf(0,0,0,0,0,0,0)
+        val dayAvg : HashMap<Int, Float> = HashMap()
 
         for(dailyData in dailyDataList){
             val day = dailyData.date.dayOfWeek.ordinal
@@ -116,31 +100,27 @@ open class ReportPresenter(v : View) {
             dayAvg[day] = value/dayCount[day]
         }
 
-        val resultIndex = dayAvg.toList().sortedWith(compareByDescending{it.second}).toMap().keys.stream().findFirst().get()
-        val result = when(resultIndex){
-            0 -> "월"
-            1 -> "화"
-            2 -> "수"
-            3 -> "목"
-            4 -> "금"
-            5 -> "토"
-            6 -> "일"
-            else -> "-"
-        }
+        val index = dayAvg.toList().sortedWith(compareByDescending{it.second}).toMap().keys.stream().findFirst().get()
 
+        //Update view
         val v = view as View.Cup
-        v.updateMaxDay(result, dayAvg[resultIndex]!!)
+        v.updateMaxDay(dayArray[index], dayAvg[index]!!)
     }
 
 
+
+    /*-------------------V - P Contract-------------------------*/
     interface View{
 
+        // -> Both
         fun updateAVG(avg : Float)
 
+        // -> ReportCupFragment
         interface Cup : View {
             fun updateMaxDay(day : String, avg : Float)
         }
 
+        // -> ReportCaffeineFragment
         interface Caffeine : View {
             fun updateAvgRecommend(value: Float, desc: String, recommend : Int, indicator: Int)
         }

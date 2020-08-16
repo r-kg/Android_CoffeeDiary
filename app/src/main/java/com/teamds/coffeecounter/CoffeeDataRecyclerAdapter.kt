@@ -12,11 +12,11 @@ import java.time.format.DateTimeFormatter
 import java.util.*
 
 
-class CoffeeDataRecyclerAdapter(var itemSet: List<CoffeeData>) : RecyclerView.Adapter<CoffeeDataRecyclerAdapter.ViewHolder>() {
+class CoffeeDataRecyclerAdapter(var list: List<CoffeeData>) : RecyclerView.Adapter<CoffeeDataRecyclerAdapter.ViewHolder>() {
 
-    var recylcerList : List<CoffeeData> = itemSet
+    private var recylcerList : List<CoffeeData> = list
 
-    public inner class ViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
+    inner class ViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
         var textCoffee : TextView = itemView.findViewById(R.id.text_coffee_name)
         var textDate : TextView = itemView.findViewById(R.id.text_date)
         var textSize : TextView = itemView.findViewById(R.id.text_size)
@@ -50,7 +50,7 @@ class CoffeeDataRecyclerAdapter(var itemSet: List<CoffeeData>) : RecyclerView.Ad
         return recylcerList.size
     }
 
-    fun setRecyclerList(itemSet: List<CoffeeData>){
-        recylcerList = itemSet
+    fun setRecyclerList(list: List<CoffeeData>){
+        recylcerList = list
     }
 }

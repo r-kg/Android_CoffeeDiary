@@ -26,12 +26,13 @@ class ReportFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        //---------------init-----------------//
         binding = FragmentReportBinding.inflate(layoutInflater)
+
+        /*---------------------Hooks--------------------------*/
         viewPager2 = binding.reportViewpager
         tabLayout = binding.reportTablayout
 
-        //------------Viewpager2--------------//
+        /*---------------Viewpager2--------------*/
         val adapter = ViewPagerAdapter(this.requireActivity())
         viewPager2.adapter = adapter
 
