@@ -24,7 +24,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/americano_icon" />
+            app:srcCompat="@drawable/img_coffeecup" />
 
         <ImageView
             android:id="@+id/imageView7"
@@ -36,7 +36,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.28"
-            app:srcCompat="@drawable/beanorange" />
+            app:srcCompat="@drawable/ic_coffeebean" />
 
         <TextView
             android:id="@+id/text_caffeine"

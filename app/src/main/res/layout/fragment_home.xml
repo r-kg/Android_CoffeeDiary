@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/wave_00"
+        android:src="@drawable/img_coffeeflow_00"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -96,7 +96,7 @@
         android:layout_marginStart="56dp"
         android:layout_marginTop="16dp"
         android:adjustViewBounds="true"
-        android:src="@drawable/americano_icon"
+        android:src="@drawable/img_coffeecup"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_warn" />
 
@@ -134,7 +134,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="28dp"
         android:adjustViewBounds="true"
-        android:src="@drawable/beanorange"
+        android:src="@drawable/ic_coffeebean"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />

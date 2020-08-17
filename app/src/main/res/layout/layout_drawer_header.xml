@@ -4,7 +4,7 @@
     android:layout_height="200dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@drawable/drawer_bg"
+    android:background="@drawable/img_drawer_bg"
     android:gravity="bottom"
     android:padding="20dp">
 

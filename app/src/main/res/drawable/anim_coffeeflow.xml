@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+    <item android:drawable="@drawable/img_coffeeflow_00" android:duration="55" />
+    <item android:drawable="@drawable/img_coffeeflow_01" android:duration="55" />
+    <item android:drawable="@drawable/img_coffeeflow_02" android:duration="55" />
+    <item android:drawable="@drawable/img_coffeeflow_03" android:duration="55" />
+    <item android:drawable="@drawable/img_coffeeflow_04" android:duration="55" />
+    <item android:drawable="@drawable/img_coffeeflow_05" android:duration="55" />
+    <item android:drawable="@drawable/img_coffeeflow_06" android:duration="55" />
+    <item android:drawable="@drawable/img_coffeeflow_07" android:duration="55" />
+    <item android:drawable="@drawable/img_coffeeflow_08" android:duration="55" />
+    <item android:drawable="@drawable/img_coffeeflow_09" android:duration="55" />
+    <item android:drawable="@drawable/img_coffeeflow_10" android:duration="55" />
+    <item android:drawable="@drawable/img_coffeeflow_11" android:duration="55" />
+    <item android:drawable="@drawable/img_coffeeflow_12" android:duration="55" />
+    <item android:drawable="@drawable/img_coffeeflow_13" android:duration="55" />
+    <item android:drawable="@drawable/img_coffeeflow_14" android:duration="55" />
+    <item android:drawable="@drawable/img_coffeeflow_15" android:duration="55" />
+    <item android:drawable="@drawable/img_coffeeflow_16" android:duration="55" />
+    <item android:drawable="@drawable/img_coffeeflow_17" android:duration="55" />
+    <item android:drawable="@drawable/img_coffeeflow_18" android:duration="55" />
+    <item android:drawable="@drawable/img_coffeeflow_19" android:duration="55" />
+    <item android:drawable="@drawable/img_coffeeflow_20" android:duration="55" />
+    <item android:drawable="@drawable/img_coffeeflow_21" android:duration="55" />
+    <item android:drawable="@drawable/img_coffeeflow_22" android:duration="55" />
+</animation-list>

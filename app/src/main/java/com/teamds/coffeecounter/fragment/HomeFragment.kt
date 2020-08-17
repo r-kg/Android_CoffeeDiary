@@ -38,64 +38,17 @@ class HomeFragment : Fragment(), HomePresenter.View {
 
         /*---------------------Hooks--------------------------*/
         presenter = HomePresenter(this)
+        constraintSet.clone(binding.root)
         textCoffee = binding.textCoffeeCount
         textCaf = binding.textCaffeineCount
 
-        val date = LocalDate.now()
-        constraintSet.clone(binding.root)
-
-        /*----------------------------------------------------*/
+        /*-------------------Init---------------------------*/
         presenter.setCount(this.requireContext())
+        binding.textDate.text = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 EE요일", Locale.KOREA))
 
-        binding.textDate.text = date.format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 EE요일", Locale.KOREA))
-
-
-        //*--------------------------fab---------------------*/
+        //*-----------------------fab---------------------*/
         binding.fabAdd.setOnClickListener {
-            val bottomSheetDialog = BottomSheetDialog(this.requireContext(), R.style.BottomSheet)
-            val bottomSheetBinding = LayoutMainBottomSheetBinding.inflate(layoutInflater)
-            var touchTrigger = true
-            bottomSheetDialog.setContentView(bottomSheetBinding.root)
-
-            bottomSheetBinding.npSize.run{
-                wrapSelectorWheel = false
-                minValue=0
-                maxValue=4
-                displayedValues = arrayOf("캔/숏","톨/S","그란데/M","벤티/L","리터/1L+")
-                value = 1
-            }
-
-            bottomSheetBinding.npShot.run{
-                wrapSelectorWheel = false
-                minValue=0
-                maxValue=5
-                displayedValues = arrayOf("추가 안함","+1","+2","+3","+4","+5 이상")
-                value = 0
-            }
-            bottomSheetDialog.show()
-
-            bottomSheetBinding.rgCoffee.setOnCheckedChangeListener { group, checkedId ->
-                bottomSheetBinding.fabConfirm.let{
-                    it.background.setTint(resources.getColor(R.color.colorAccent))
-                    it.isEnabled = true
-                    it.text = "DONE"
-                    it.extend()
-                }
-
-            }
-
-            bottomSheetBinding.fabConfirm.setOnClickListener {
-                if(touchTrigger) {
-                    touchTrigger=false
-                    presenter.insertCoffeeData(
-                        this.requireContext(),
-                        bottomSheetBinding.rgCoffee.checkedRadioButtonId,
-                        bottomSheetBinding.npSize.value,
-                        bottomSheetBinding.npShot.value
-                    )
-                    bottomSheetDialog.hide()
-                }
-            }
+            showBottomSheetDialog()
         }
 
         return binding.root
@@ -103,10 +56,61 @@ class HomeFragment : Fragment(), HomePresenter.View {
 
     override fun onStart() {
         super.onStart()
-        binding.imgFlow.setBackgroundResource(R.drawable.coffeeflow_anim)
+        binding.imgFlow.setBackgroundResource(R.drawable.anim_coffeeflow)
         val anim = binding.imgFlow.background as AnimationDrawable
 
         anim.start()
+    }
+
+    /*-------------------Bottom Sheet----------------------------*/
+
+    private fun showBottomSheetDialog(){
+        val bottomSheetDialog = BottomSheetDialog(this.requireContext(), R.style.BottomSheet)
+        val bottomSheetBinding = LayoutMainBottomSheetBinding.inflate(layoutInflater)
+        val sizeList = arrayOf("캔/숏","톨/S","그란데/M","벤티/L","리터/1L+")
+        val shotList = arrayOf("추가 안함","+1","+2","+3","+4","+5 이상")
+        var touchTrigger = true
+        bottomSheetDialog.setContentView(bottomSheetBinding.root)
+
+
+        //Number Picker
+        bottomSheetBinding.npSize.run{
+            wrapSelectorWheel = false
+            minValue=0
+            maxValue=4
+            displayedValues = sizeList
+            value = 1
+        }
+
+        bottomSheetBinding.npShot.run{
+            wrapSelectorWheel = false
+            minValue=0
+            maxValue=5
+            displayedValues = shotList
+            value = 0
+        }
+
+        // coffee select event
+        bottomSheetBinding.rgCoffee.setOnCheckedChangeListener { group, checkedId ->
+            bottomSheetBinding.fabConfirm.let{
+                it.background.setTint(resources.getColor(R.color.colorAccent))
+                it.isEnabled = true
+                it.text = "DONE"
+                it.extend()
+            }
+
+        }
+
+        // fab event
+        bottomSheetBinding.fabConfirm.setOnClickListener {
+            if(touchTrigger) {
+                touchTrigger=false
+                presenter.insertCoffeeData(this.requireContext(), bottomSheetBinding.rgCoffee.checkedRadioButtonId, bottomSheetBinding.npSize.value, bottomSheetBinding.npShot.value)
+                bottomSheetDialog.hide()
+            }
+        }
+
+        bottomSheetDialog.show()
     }
 
     /*-------------------Presenter Contract----------------------*/
