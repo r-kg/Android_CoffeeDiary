@@ -33,7 +33,7 @@ class CoffeeDataRecyclerAdapter(var list: List<CoffeeData>) : RecyclerView.Adapt
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val coffeeText = arrayOf("아메리카노","라떼/카푸치노","에스프레소","콜드브루/드립","디카페인","카페인 음료류")
+        val coffeeText = arrayOf("아메리카노","라떼/카푸치노","에스프레소","콜드브루/드립","디카페인","카페인 음료")
         val sizeText = arrayOf("캔/Short","톨/Small","그란데/Medium","벤티/Large","리터/1L+")
 
         holder.textCoffee.text = coffeeText[recylcerList[position].coffee]

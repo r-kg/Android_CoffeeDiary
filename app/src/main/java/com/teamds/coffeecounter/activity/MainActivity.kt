@@ -1,6 +1,7 @@
 package com.teamds.coffeecounter.activity
 
 import android.content.ActivityNotFoundException
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -21,6 +22,8 @@ import com.teamds.coffeecounter.R
 import com.teamds.coffeecounter.databinding.ActivityMainBinding
 import com.teamds.coffeecounter.fragment.HomeFragment
 import com.teamds.coffeecounter.fragment.ReportFragment
+import java.time.LocalDate
+import java.time.LocalDateTime
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
@@ -129,32 +132,27 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
              */
 
-            R.id.nav_feedback -> sendFeedback()
+            R.id.nav_feedback -> sendFeedback(this)
         }
 
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
 
-    fun sendFeedback(){
-        val TO = arrayOf("gundaegi2@gmail.com")
-        val CC = arrayOf("")
-        val emailIntent = Intent(Intent.ACTION_SEND)
-        emailIntent.data = Uri.parse("mailto:")
-        emailIntent.type = "text/plain"
+    private fun sendFeedback(context: Context){
 
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO)
-        emailIntent.putExtra(Intent.EXTRA_CC, CC)
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "커피몇잔 Feedback Email")
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "")
-
+        val i = Intent(Intent.ACTION_SEND)
+        i.type = "message/rfc822"
+        i.putExtra(Intent.EXTRA_EMAIL, arrayOf("recipient@example.com"))
+        i.putExtra(Intent.EXTRA_SUBJECT, "커피몇잔 피드백 이메일 "+ LocalDate.now())
+        i.putExtra(Intent.EXTRA_TEXT, "-")
         try {
-            startActivity(Intent.createChooser(emailIntent, "보내는중..."))
-            finish()
+            startActivity(Intent.createChooser(i, "Send Email"))
         } catch (ex: ActivityNotFoundException) {
             Toast.makeText(
-                this@MainActivity,
-                "There is no email client installed.", Toast.LENGTH_SHORT
+                context,
+                "There are no email clients installed.",
+                Toast.LENGTH_SHORT
             ).show()
         }
     }

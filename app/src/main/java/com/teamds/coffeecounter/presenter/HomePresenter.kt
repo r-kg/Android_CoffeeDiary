@@ -31,7 +31,7 @@ class HomePresenter(v: View){
 
         val currentDateTime = LocalDateTime.now()
         val todayData : DailyData = DailyDatabase.getInstance(context)?.dailyDao()?.getTodayData(currentDateTime.toLocalDate())!!
-        val index = coffee - 2131362045
+        val index = coffee - 2131362043
 
         //커피 종류별 카페인
         var caffeine : Int = when(index){
