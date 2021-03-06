@@ -1,6 +1,6 @@
 # Android_CoffeeCounter
 
-Android Studio 3.6/Kotiln
+Android Studio/Kotiln
 
 커피 소비량을 기록 할 수 있는 개인 헬스 앱입니다.
 (Last Update 2020/8/12)
