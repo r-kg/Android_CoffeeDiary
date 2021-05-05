@@ -1,10 +1,13 @@
-package com.teamds.coffeecounter.model.coffeedb
+package com.teamds.coffeecounter.data.local
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.teamds.coffeecounter.data.local.dao.CoffeeDao
+import com.teamds.coffeecounter.model.coffeedb.CoffeeData
+import com.teamds.coffeecounter.model.coffeedb.Converters
 
 
 @Database(entities = arrayOf(CoffeeData::class), version = 2)

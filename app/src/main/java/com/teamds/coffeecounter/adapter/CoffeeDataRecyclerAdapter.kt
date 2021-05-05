@@ -1,12 +1,11 @@
-package com.teamds.coffeecounter
+package com.teamds.coffeecounter.adapter
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.teamds.coffeecounter.databinding.RecyclerviewCoffeeDataItemBinding
+import com.teamds.coffeecounter.R
 import com.teamds.coffeecounter.model.coffeedb.CoffeeData
 import java.time.format.DateTimeFormatter
 import java.util.*

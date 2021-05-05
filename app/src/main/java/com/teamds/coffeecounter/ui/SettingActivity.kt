@@ -1,18 +1,16 @@
-package com.teamds.coffeecounter.activity
+package com.teamds.coffeecounter.ui
 
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.teamds.coffeecounter.R
-import com.teamds.coffeecounter.databinding.ActivityMainBinding
 import com.teamds.coffeecounter.databinding.ActivitySettingBinding
-import com.teamds.coffeecounter.model.coffeedb.CoffeeDatabase
+import com.teamds.coffeecounter.data.local.CoffeeDatabase
 import com.teamds.coffeecounter.model.dailydb.DailyData
-import com.teamds.coffeecounter.model.dailydb.DailyDatabase
+import com.teamds.coffeecounter.data.local.DailyDatabase
 import java.time.LocalDate
 
 class SettingActivity : AppCompatActivity() {

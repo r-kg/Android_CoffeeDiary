@@ -1,4 +1,4 @@
-package com.teamds.coffeecounter.fragment
+package com.teamds.coffeecounter.ui
 
 import android.graphics.Color
 import android.graphics.drawable.AnimationDrawable
@@ -16,7 +16,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.teamds.coffeecounter.R
 import com.teamds.coffeecounter.databinding.FragmentHomeBinding
 import com.teamds.coffeecounter.databinding.LayoutMainBottomSheetBinding
-import com.teamds.coffeecounter.presenter.HomePresenter
+import com.teamds.coffeecounter.viewmodel.HomePresenter
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*

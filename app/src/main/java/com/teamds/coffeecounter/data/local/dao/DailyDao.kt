@@ -1,6 +1,7 @@
-package com.teamds.coffeecounter.model.dailydb
+package com.teamds.coffeecounter.data.local.dao
 
 import androidx.room.*
+import com.teamds.coffeecounter.model.dailydb.DailyData
 import java.time.LocalDate
 
 @Dao

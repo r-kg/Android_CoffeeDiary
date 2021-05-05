@@ -1,13 +1,11 @@
-package com.teamds.coffeecounter.fragment.report
+package com.teamds.coffeecounter.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
@@ -16,7 +14,7 @@ import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.teamds.coffeecounter.R
 import com.teamds.coffeecounter.databinding.FragmentReportCoffeeBinding
-import com.teamds.coffeecounter.presenter.ReportPresenter
+import com.teamds.coffeecounter.viewmodel.ReportPresenter
 
 
 class ReportCaffeineFragment : Fragment(), ReportPresenter.View.Caffeine {

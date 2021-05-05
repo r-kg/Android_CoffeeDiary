@@ -1,19 +1,16 @@
-package com.teamds.coffeecounter.fragment.report
+package com.teamds.coffeecounter.ui
 
 import android.app.DatePickerDialog
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.DatePicker
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.teamds.coffeecounter.CoffeeDataRecyclerAdapter
-import com.teamds.coffeecounter.R
+import com.teamds.coffeecounter.adapter.CoffeeDataRecyclerAdapter
 import com.teamds.coffeecounter.databinding.FragmentDayBinding
-import com.teamds.coffeecounter.model.coffeedb.CoffeeDatabase
+import com.teamds.coffeecounter.data.local.CoffeeDatabase
 import java.time.LocalDate
 
 

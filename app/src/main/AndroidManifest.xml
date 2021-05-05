@@ -18,11 +18,10 @@
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-2751306043506296~9973766863" />
 
-        <activity android:name=".activity.SettingActivity" />
-        <activity android:name=".activity.MainActivity" >
+        <activity android:name=".ui.SettingActivity" />
+        <activity android:name=".ui.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

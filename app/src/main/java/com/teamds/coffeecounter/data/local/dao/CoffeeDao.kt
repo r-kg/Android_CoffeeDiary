@@ -1,9 +1,10 @@
-package com.teamds.coffeecounter.model.coffeedb
+package com.teamds.coffeecounter.data.local.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import com.teamds.coffeecounter.model.coffeedb.CoffeeData
 
 @Dao
 interface CoffeeDao {

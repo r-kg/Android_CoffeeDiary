@@ -1,9 +1,8 @@
-package com.teamds.coffeecounter.activity
+package com.teamds.coffeecounter.ui
 
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
@@ -20,10 +19,7 @@ import com.google.android.gms.ads.MobileAds
 import com.google.android.material.navigation.NavigationView
 import com.teamds.coffeecounter.R
 import com.teamds.coffeecounter.databinding.ActivityMainBinding
-import com.teamds.coffeecounter.fragment.HomeFragment
-import com.teamds.coffeecounter.fragment.ReportFragment
 import java.time.LocalDate
-import java.time.LocalDateTime
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
@@ -122,7 +118,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 ).commit()
             }
             R.id.nav_setting -> {
-                val intent = Intent(this,SettingActivity()::class.java)
+                val intent = Intent(this, SettingActivity()::class.java)
                 startActivity(intent)
             }
 

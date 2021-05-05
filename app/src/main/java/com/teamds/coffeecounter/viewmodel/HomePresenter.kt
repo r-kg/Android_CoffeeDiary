@@ -1,10 +1,10 @@
-package com.teamds.coffeecounter.presenter
+package com.teamds.coffeecounter.viewmodel
 
 import android.content.Context
 import com.teamds.coffeecounter.model.coffeedb.CoffeeData
-import com.teamds.coffeecounter.model.coffeedb.CoffeeDatabase
+import com.teamds.coffeecounter.data.local.CoffeeDatabase
 import com.teamds.coffeecounter.model.dailydb.DailyData
-import com.teamds.coffeecounter.model.dailydb.DailyDatabase
+import com.teamds.coffeecounter.data.local.DailyDatabase
 import java.time.LocalDate
 import java.time.LocalDateTime
 

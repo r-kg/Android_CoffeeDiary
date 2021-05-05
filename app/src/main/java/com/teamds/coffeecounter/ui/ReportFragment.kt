@@ -1,4 +1,4 @@
-package com.teamds.coffeecounter.fragment
+package com.teamds.coffeecounter.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,9 +11,6 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.teamds.coffeecounter.databinding.FragmentReportBinding
-import com.teamds.coffeecounter.fragment.report.DayFragment
-import com.teamds.coffeecounter.fragment.report.ReportCaffeineFragment
-import com.teamds.coffeecounter.fragment.report.ReportCupFragment
 
 
 class ReportFragment : Fragment() {

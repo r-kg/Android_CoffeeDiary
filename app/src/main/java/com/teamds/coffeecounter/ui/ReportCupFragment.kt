@@ -1,4 +1,4 @@
-package com.teamds.coffeecounter.fragment.report
+package com.teamds.coffeecounter.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,7 +14,7 @@ import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.teamds.coffeecounter.R
 import com.teamds.coffeecounter.databinding.FragmentReportCoffeeBinding
-import com.teamds.coffeecounter.presenter.ReportPresenter
+import com.teamds.coffeecounter.viewmodel.ReportPresenter
 
 
 class ReportCupFragment : Fragment(), ReportPresenter.View.Cup {
