@@ -7,10 +7,11 @@ import androidx.room.RoomDatabase
 import com.teamds.coffeecounter.data.local.dao.CoffeeDao
 import com.teamds.coffeecounter.data.local.dao.PageDao
 import com.teamds.coffeecounter.data.local.dao.StoreDao
+import com.teamds.coffeecounter.data.local.entity.CoffeeEntity
 import com.teamds.coffeecounter.data.local.entity.PageEntity
 import com.teamds.coffeecounter.data.local.entity.StoreEntity
 
-@Database(entities = [PageEntity::class, StoreEntity::class, PageEntity::class],  version = 1, exportSchema = false)
+@Database(entities = [PageEntity::class, StoreEntity::class, CoffeeEntity::class],  version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun pageDao() : PageDao
     abstract fun storeDao() : StoreDao
