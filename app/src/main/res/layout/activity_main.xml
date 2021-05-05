@@ -3,14 +3,21 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
-
-    </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <me.ibrahimsn.lib.SmoothBottomBar
+            android:id="@+id/bottomBar"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:elevation="5dp"
+            app:iconSize="18dp"
+            app:textSize="13sp"
+            app:backgroundColor="@color/colorPrimary"
+            app:menu="@menu/main_menu" />
+
+    </LinearLayout>
 </layout>

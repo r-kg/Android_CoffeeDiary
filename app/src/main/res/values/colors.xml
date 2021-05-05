@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#ff7b22</color>
-    <color name="colorPrimaryDark">#d6671c</color>
-    <color name="colorAccent">#ff7b22</color>
-    <color name="blue">#36bcff</color>
-    <color name="coffeeBrown">#BF8629</color>
-    <color name="coffee">#602510</color>
+    <color name="colorPrimary">#F5AE3A</color>
+    <color name="colorPrimaryDark">#FD9D00</color>
+    <color name="colorAccent">#79FF89</color>
 
-    <color name="white_blue">#B4F1FD</color>
-    <color name="white_green">#B4FDBE</color>
-    <color name="white_yellow">#FDFCB4</color>
-    <color name="white_red">#FDB4B4</color>
-
-    <color name="text_color">#232323</color>
-    <color name="text_gray">#3D3D3D</color>
+    <color name="text">#232323</color>
+    <color name="textSub">#3D3D3D</color>
 </resources>
