@@ -22,4 +22,9 @@
 - 그 외 다양한 기능이 추가/삭제될 예정입니다.
 
 
+모든 수정 이력은 [Commit History](https://github.com/RollinKG/Android_CoffeeDiary/commits/master)에 자세히 작성할 예정입니다. 감사합니다 :)
+
+---
+
+
 
