@@ -8,9 +8,7 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.teamds.coffeecounter.R
 import com.teamds.coffeecounter.databinding.ActivitySettingBinding
-import com.teamds.coffeecounter.data.local.CoffeeDatabase
 import com.teamds.coffeecounter.model.dailydb.DailyData
-import com.teamds.coffeecounter.data.local.DailyDatabase
 import java.time.LocalDate
 
 class SettingActivity : AppCompatActivity() {

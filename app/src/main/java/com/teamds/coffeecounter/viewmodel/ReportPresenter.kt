@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.preference.PreferenceManager
 import com.github.mikephil.charting.data.Entry
 import com.teamds.coffeecounter.R
-import com.teamds.coffeecounter.data.local.DailyDatabase
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import kotlin.collections.HashMap

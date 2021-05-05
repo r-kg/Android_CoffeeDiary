@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.teamds.coffeecounter.adapter.CoffeeDataRecyclerAdapter
 import com.teamds.coffeecounter.databinding.FragmentDayBinding
-import com.teamds.coffeecounter.data.local.CoffeeDatabase
 import java.time.LocalDate
 
 
