@@ -6,7 +6,7 @@
 
 ---
 
-### CoffeeDiary is currently on maintenance! (Last Mode: 2021-05-05)
+### CoffeeDiary is currently on maintenance! (Last Mod: 2021-05-05)
 
 현재 Application Refactoring을 진행중입니다. 코드와 기능의 개선 두 작업을 하고 있습니다.
 
