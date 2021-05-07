@@ -1,7 +1,11 @@
 package com.teamds.coffeecounter
 
 import android.app.Application
+import com.teamds.coffeecounter.repository.PageRepository
+import com.teamds.coffeecounter.repository.PageRepositoryImpl
+import com.teamds.coffeecounter.viewmodel.CameraViewModel
 import com.teamds.coffeecounter.viewmodel.HomeViewModel
+import com.teamds.coffeecounter.viewmodel.SettingViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -15,11 +19,17 @@ class MyApplication : Application() {
         startKoin{
             androidLogger()
             androidContext(this@MyApplication)
-            modules(viewModelModule)
+            modules(viewModelModule, repositoryModule)
         }
     }
 }
 
 val viewModelModule = module {
-    viewModel { HomeViewModel() }
+    viewModel { HomeViewModel(get()) }
+    viewModel { CameraViewModel(get()) }
+    viewModel { SettingViewModel() }
+}
+
+val repositoryModule = module {
+    single<PageRepository> { PageRepositoryImpl() }
 }
