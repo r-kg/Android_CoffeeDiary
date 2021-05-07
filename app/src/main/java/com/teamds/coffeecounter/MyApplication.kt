@@ -27,7 +27,6 @@ class MyApplication : Application() {
 val viewModelModule = module {
     viewModel { HomeViewModel(get()) }
     viewModel { CameraViewModel(get()) }
-    viewModel { SettingViewModel() }
 }
 
 val repositoryModule = module {

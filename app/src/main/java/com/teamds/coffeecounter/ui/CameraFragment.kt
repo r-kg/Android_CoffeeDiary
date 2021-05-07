@@ -6,28 +6,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.teamds.coffeecounter.BaseFragment
 import com.teamds.coffeecounter.R
+import com.teamds.coffeecounter.databinding.CameraFragmentBinding
 import com.teamds.coffeecounter.viewmodel.CameraViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class CameraFragment : Fragment() {
+class CameraFragment : BaseFragment<CameraFragmentBinding>(R.layout.camera_fragment) {
 
-    companion object {
-        fun newInstance() = CameraFragment()
-    }
+    private val viewModel: CameraViewModel by viewModel()
 
-    private lateinit var viewModel: CameraViewModel
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.camera_fragment, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        super.onCreateView(inflater, container, savedInstanceState)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CameraViewModel::class.java)
-        // TODO: Use the ViewModel
+
     }
 
 }
