@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/home_fragment">
+
+    <fragment
+        android:id="@+id/home_fragment"
+        android:name="com.teamds.coffeecounter.ui.HomeFragment"
+        android:label="Home Fragment"
+        tools:layout="@layout/home_fragment" />
+    <fragment
+        android:id="@+id/camera_fragment"
+        android:name="com.teamds.coffeecounter.ui.CameraFragment"
+        android:label="Camera Fragment"
+        tools:layout="@layout/camera_fragment" />
+    <fragment
+        android:id="@+id/setting_fragment"
+        android:name="com.teamds.coffeecounter.ui.SettingFragment"
+        android:label="Setting Fragment"
+        tools:layout="@layout/setting_fragment" />
+
+</navigation>
