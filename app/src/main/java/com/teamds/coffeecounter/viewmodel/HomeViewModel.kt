@@ -1,7 +1,11 @@
 package com.teamds.coffeecounter.viewmodel
 
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.MutableLiveData
+import com.teamds.coffeecounter.BaseViewModel
+import com.teamds.coffeecounter.domain.entity.Page
 
-class HomeViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+class HomeViewModel : BaseViewModel() {
+
+    val pageList = MutableLiveData<List<Page>>()
+
 }
