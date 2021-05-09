@@ -1,8 +1,9 @@
 package com.teamds.coffeecounter.repository
 
+import com.teamds.coffeecounter.data.local.dao.PageDao
 import com.teamds.coffeecounter.domain.entity.Page
 
-class PageRepositoryImpl : PageRepository{
+class PageRepositoryImpl(val localDataSource : PageDao) : PageRepository{
     override suspend fun getPage(id: Int) {
         TODO("Not yet implemented")
     }

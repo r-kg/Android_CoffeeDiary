@@ -54,6 +54,7 @@ class CameraFragment : BaseFragment<CameraFragmentBinding>(R.layout.camera_fragm
             )
         }
 
+
         // Set up the listener for take photo button
         binding.btnCapture.setOnClickListener { takePhoto() }
 

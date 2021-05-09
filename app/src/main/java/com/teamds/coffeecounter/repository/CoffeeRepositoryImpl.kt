@@ -1,8 +1,9 @@
 package com.teamds.coffeecounter.repository
 
+import com.teamds.coffeecounter.data.local.dao.CoffeeDao
 import com.teamds.coffeecounter.domain.entity.Coffee
 
-class CoffeeRepositoryImpl : CoffeeRepository{
+class CoffeeRepositoryImpl(val localDataSource : CoffeeDao) : CoffeeRepository{
     override suspend fun saveCoffee(coffee: Coffee) {
         TODO("Not yet implemented")
     }
