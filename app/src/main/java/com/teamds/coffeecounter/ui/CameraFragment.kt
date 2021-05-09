@@ -7,16 +7,14 @@ import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.Toast
-import androidx.camera.core.CameraSelector
-import androidx.camera.core.ImageCapture
-import androidx.camera.core.ImageCaptureException
-import androidx.camera.core.Preview
+import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.teamds.coffeecounter.BaseFragment
 import com.teamds.coffeecounter.R
 import com.teamds.coffeecounter.databinding.CameraFragmentBinding
+import com.teamds.coffeecounter.ui.component.CameraBottomSheet
 import com.teamds.coffeecounter.viewmodel.CameraViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
@@ -28,6 +26,7 @@ import java.util.concurrent.Executors
 class CameraFragment : BaseFragment<CameraFragmentBinding>(R.layout.camera_fragment) {
 
     private val viewModel: CameraViewModel by viewModel()
+    private val bottomSheetDialog = CameraBottomSheet()
     private var imageCapture: ImageCapture? = null
 
     private lateinit var outputDirectory: File
@@ -37,7 +36,7 @@ class CameraFragment : BaseFragment<CameraFragmentBinding>(R.layout.camera_fragm
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         super.onCreateView(inflater, container, savedInstanceState)
         return binding.root
     }
@@ -62,6 +61,11 @@ class CameraFragment : BaseFragment<CameraFragmentBinding>(R.layout.camera_fragm
 
         cameraExecutor = Executors.newSingleThreadExecutor()
 
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        cameraExecutor.shutdown()
     }
 
     private fun takePhoto() {
@@ -89,6 +93,7 @@ class CameraFragment : BaseFragment<CameraFragmentBinding>(R.layout.camera_fragm
                     val savedUri = Uri.fromFile(photoFile)
                     val msg = "Photo capture succeeded: $savedUri"
                     Toast.makeText(requireActivity().baseContext, msg, Toast.LENGTH_SHORT).show()
+                    showBottomSheet()
                     Log.d(TAG, msg)
                 }
             })
@@ -135,17 +140,6 @@ class CameraFragment : BaseFragment<CameraFragmentBinding>(R.layout.camera_fragm
             mediaDir else requireActivity().filesDir
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        cameraExecutor.shutdown()
-    }
-
-    companion object {
-        private const val TAG = "CameraXBasic"
-        private const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
-        private const val REQUEST_CODE_PERMISSIONS = 10
-        private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
-    }
 
     override fun onRequestPermissionsResult(
         requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
@@ -157,4 +151,16 @@ class CameraFragment : BaseFragment<CameraFragmentBinding>(R.layout.camera_fragm
             }
         }
     }
+
+    private fun showBottomSheet(){
+        bottomSheetDialog.show(requireActivity().supportFragmentManager, "cameraBottomSheet")
+    }
+
+    companion object {
+        private const val TAG = "CameraXBasic"
+        private const val FILENAME_FORMAT = "yyyy-MM-dd-HH-mm-ss-SSS"
+        private const val REQUEST_CODE_PERMISSIONS = 10
+        private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
+    }
+
 }
