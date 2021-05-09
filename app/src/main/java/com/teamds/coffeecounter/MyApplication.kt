@@ -1,8 +1,7 @@
 package com.teamds.coffeecounter
 
 import android.app.Application
-import com.teamds.coffeecounter.repository.PageRepository
-import com.teamds.coffeecounter.repository.PageRepositoryImpl
+import com.teamds.coffeecounter.repository.*
 import com.teamds.coffeecounter.viewmodel.CameraViewModel
 import com.teamds.coffeecounter.viewmodel.HomeViewModel
 import com.teamds.coffeecounter.viewmodel.SettingViewModel
@@ -31,4 +30,6 @@ val viewModelModule = module {
 
 val repositoryModule = module {
     single<PageRepository> { PageRepositoryImpl() }
+    single<CoffeeRepository> { CoffeeRepositoryImpl() }
+    single<StoreRepository> { StoreRepositoryImpl() }
 }
