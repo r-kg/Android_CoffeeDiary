@@ -93,7 +93,7 @@ class CameraFragment : BaseFragment<CameraFragmentBinding>(R.layout.camera_fragm
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     val savedUri = Uri.fromFile(photoFile)
                     val msg = "Photo capture succeeded: $savedUri"
-                    showBottomSheet()
+                    showBottomSheet(savedUri)
                     Log.d(TAG, msg)
                 }
             })
@@ -152,7 +152,11 @@ class CameraFragment : BaseFragment<CameraFragmentBinding>(R.layout.camera_fragm
         }
     }
 
-    private fun showBottomSheet(){
+    private fun showBottomSheet(uri : Uri){
+        val bundle = Bundle()
+        bundle.putString("uri", uri.toString())
+        bottomSheetDialog.arguments = bundle
+        bottomSheetDialog.isCancelable = false
         bottomSheetDialog.show(requireActivity().supportFragmentManager, "cameraBottomSheet")
     }
 
