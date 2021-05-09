@@ -19,6 +19,17 @@ data class PageEntity(
     @ColumnInfo
     val dateTime: String,
     ){
+    companion object{
+        fun fromDomain(page : Page) : PageEntity{
+            return PageEntity(
+                id = page.id ?: 0,
+                shopId = page.shopId,
+                coffeeId = page.coffeeId,
+                imageUrl = page.imageUrl,
+                dateTime = page.dateTime.toString()
+            )
+        }
+    }
 }
 
 fun PageEntity.toDomain() : Page{
@@ -31,12 +42,3 @@ fun PageEntity.toDomain() : Page{
     )
 }
 
-fun PageEntity.fromDomain(page : Page) : PageEntity{
-    return PageEntity(
-        id = page.id ?: 0,
-        shopId = page.shopId,
-        coffeeId = page.coffeeId,
-        imageUrl = page.imageUrl,
-        dateTime = page.dateTime.toString()
-    )
-}

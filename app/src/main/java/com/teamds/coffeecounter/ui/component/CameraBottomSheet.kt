@@ -2,7 +2,6 @@ package com.teamds.coffeecounter.ui.component
 
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +12,6 @@ import com.teamds.coffeecounter.R
 import com.teamds.coffeecounter.databinding.CameraBottomSheetBinding
 import com.teamds.coffeecounter.viewmodel.CameraViewModel
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.io.File
 
 class CameraBottomSheet : BottomSheetDialogFragment() {
@@ -44,7 +42,7 @@ class CameraBottomSheet : BottomSheetDialogFragment() {
         binding.btnConfirm.setOnClickListener {
             val storeName = binding.textInputStore.text.toString()
             val coffeeName = binding.textInputCoffee.text.toString()
-            viewModel.savePage(storeName,coffeeName, uriString!!)
+            viewModel.savePage(this,storeName,coffeeName, uriString!!)
         }
 
         binding.btnCancel.setOnClickListener {

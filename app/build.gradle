@@ -79,6 +79,9 @@ dependencies {
     //UI Opensource
     implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.6'
 
+    // Event Bus
+    implementation 'org.greenrobot:eventbus:3.2.0'
+
     //Google Ad
     implementation 'com.google.android.gms:play-services-ads:20.1.0'
 

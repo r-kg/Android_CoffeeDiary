@@ -12,7 +12,7 @@ interface PageDao {
     suspend fun getPageList(offset: Int, rowsPerPage: Int): List<PageEntity>
 
     @Insert
-    suspend fun insert(item: PageEntity)
+    suspend fun insert(item: PageEntity) : Long
 
     @Delete
     suspend fun delete(item: PageEntity)
