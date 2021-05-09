@@ -8,12 +8,12 @@ import com.teamds.coffeecounter.data.local.entity.PageEntity
 
 @Dao
 interface PageDao {
-    @Query("SELECT * FROM page")
-    fun getAll(): List<PageEntity>
+    @Query("SELECT * FROM page LIMIT (:rowsPerPage) OFFSET (:offset)")
+    suspend fun getPageList(offset: Int, rowsPerPage: Int): List<PageEntity>
 
     @Insert
-    fun insert(item: PageEntity)
+    suspend fun insert(item: PageEntity)
 
     @Delete
-    fun delete(item: PageEntity)
+    suspend fun delete(item: PageEntity)
 }

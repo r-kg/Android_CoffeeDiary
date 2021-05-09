@@ -24,6 +24,7 @@ class HomeFragment : BaseFragment<HomeFragmentBinding>(R.layout.home_fragment) {
         super.onActivityCreated(savedInstanceState)
 
         binding.gridView.adapter = HomeGridAdapter(context, arrayListOf())
+        viewModel.loadPageList()
     }
 
 }
