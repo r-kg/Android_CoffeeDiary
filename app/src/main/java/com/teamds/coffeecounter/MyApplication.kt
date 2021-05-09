@@ -5,7 +5,7 @@ import com.teamds.coffeecounter.data.local.AppDatabase
 import com.teamds.coffeecounter.repository.*
 import com.teamds.coffeecounter.viewmodel.CameraViewModel
 import com.teamds.coffeecounter.viewmodel.HomeViewModel
-import com.teamds.coffeecounter.viewmodel.SettingViewModel
+import com.teamds.coffeecounter.viewmodel.InfoViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -27,6 +27,7 @@ class MyApplication : Application() {
 val viewModelModule = module {
     viewModel { HomeViewModel(get()) }
     viewModel { CameraViewModel(get(), get(), get()) }
+    viewModel { InfoViewModel(get(), get()) }
 }
 
 val repositoryModule = module {

@@ -6,15 +6,15 @@
 
     </data>
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.SettingFragment">
+        tools:context=".ui.InfoFragment">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Hello" />
 
-    </FrameLayout>
+    </LinearLayout>
 </layout>
