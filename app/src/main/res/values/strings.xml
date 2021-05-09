@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">커피몇잔</string>
 
+
     <string name="confirm">확인</string>
     <string name="cancel">취소</string>
 
@@ -12,5 +13,10 @@
     <string name="input_coffee_name">어떤 커피 드셨어요?</string>
     <string name="input_coffee_hint">마신 커피 종류</string>
     <string name="input_store_hint">카페 상호명</string>
+
+    <string name="my_coffee_stat">나의 커피 통계</string>
+    <string name="coffee_until_today">오늘까지 마신 커피</string>
+    <string name="total">총</string>
+    <string name="cup">잔</string>
 
 </resources>

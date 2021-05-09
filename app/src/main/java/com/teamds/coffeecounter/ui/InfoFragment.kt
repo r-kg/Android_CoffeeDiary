@@ -22,6 +22,7 @@ class InfoFragment : BaseFragment<InfoFragmentBinding>(R.layout.info_fragment) {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        binding.vm = viewModel
     }
 
 }

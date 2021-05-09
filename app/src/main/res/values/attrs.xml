@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="InfoListTile">
+        <attr name="leading" format="reference"/>
+        <attr name="title" format="reference|string"/>
+        <attr name="prefix" format="reference|string"/>
+        <attr name="value" format="reference|string"/>
+        <attr name="suffix" format="reference|string"/>
+    </declare-styleable>
+</resources>
