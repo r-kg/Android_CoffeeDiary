@@ -93,7 +93,6 @@ class CameraFragment : BaseFragment<CameraFragmentBinding>(R.layout.camera_fragm
                 override fun onImageSaved(output: ImageCapture.OutputFileResults) {
                     val savedUri = Uri.fromFile(photoFile)
                     val msg = "Photo capture succeeded: $savedUri"
-                    Toast.makeText(requireActivity().baseContext, msg, Toast.LENGTH_SHORT).show()
                     showBottomSheet()
                     Log.d(TAG, msg)
                 }

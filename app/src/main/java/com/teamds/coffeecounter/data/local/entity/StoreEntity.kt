@@ -14,6 +14,15 @@ data class StoreEntity(
     @ColumnInfo
     val count: Int
 ) {
+    companion object{
+        fun fromDomain(store: Store) : StoreEntity {
+            return StoreEntity(
+                id = store.id ?: 0,
+                name = store.name,
+                count = store.count
+            )
+        }
+    }
 }
 
 fun StoreEntity.toDomain() : Store {
@@ -21,13 +30,5 @@ fun StoreEntity.toDomain() : Store {
         id = this.id,
         name = this.name,
         count = this.count
-    )
-}
-
-fun StoreEntity.fromDomain(store: Store) : StoreEntity {
-    return StoreEntity(
-        id = store.id ?: 0,
-        name = store.name,
-        count = store.count
     )
 }

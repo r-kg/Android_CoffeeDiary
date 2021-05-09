@@ -9,9 +9,13 @@ import androidx.fragment.app.DialogFragment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.teamds.coffeecounter.R
 import com.teamds.coffeecounter.databinding.CameraBottomSheetBinding
+import com.teamds.coffeecounter.viewmodel.CameraViewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CameraBottomSheet : BottomSheetDialogFragment() {
 
+    private val viewModel: CameraViewModel by sharedViewModel()
     lateinit var binding : CameraBottomSheetBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +29,12 @@ class CameraBottomSheet : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.camera_bottom_sheet, container, false)
+
+        binding.btnConfirm.setOnClickListener {
+            viewModel.savePage("test","test")
+        }
+
+
         return binding.root
     }
 }
