@@ -1,5 +1,6 @@
 package com.teamds.coffeecounter.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.teamds.coffeecounter.BaseViewModel
@@ -13,7 +14,7 @@ class HomeViewModel(private val pageRepository : PageRepository) : BaseViewModel
     private val row = 30
     private var currentPage = 0
 
-    private val pageList = MutableLiveData<ArrayList<Page>>().apply {
+    val pageList = MutableLiveData<ArrayList<Page>>().apply {
         value = arrayListOf()
     }
 
@@ -21,6 +22,7 @@ class HomeViewModel(private val pageRepository : PageRepository) : BaseViewModel
         viewModelScope.launch(Dispatchers.IO) {
             val response = pageRepository.getPageList(currentPage++, row)
             pageList.value!!.addAll(response)
+            pageList.postValue(pageList.value)
         }
     }
 

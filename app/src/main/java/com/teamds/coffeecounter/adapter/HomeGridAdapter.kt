@@ -2,10 +2,12 @@ package com.teamds.coffeecounter.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.ImageView
 import com.teamds.coffeecounter.R
 import com.teamds.coffeecounter.domain.entity.Page
 
@@ -16,6 +18,9 @@ class HomeGridAdapter(private var context: Context?, private var pageList: Array
         val page = pageList[position]
         val inflater = context!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val pageView : View = inflater.inflate(R.layout.item_home_grid, null)
+
+        val image : ImageView = pageView.findViewById(R.id.gridImg)
+        image.setImageURI(Uri.parse(page.imageUrl))
 
         return pageView
     }
