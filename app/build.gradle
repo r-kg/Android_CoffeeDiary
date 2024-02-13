@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'koin'
 
 android {
+    namespace "com.teamds.coffeecounter"
     compileSdkVersion 30
 
     defaultConfig {
@@ -19,6 +19,7 @@ android {
     }
 
     buildFeatures{
+        viewBinding = true
         dataBinding = true
     }
 
